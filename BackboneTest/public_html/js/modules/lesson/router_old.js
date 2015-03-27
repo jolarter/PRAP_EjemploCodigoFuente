@@ -3,16 +3,17 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'views/lesson/lessonIntroView',
-
-], function($, _, Backbone, LessonIntroView) {
+  'views/home/HomeView',
+  'views/projects/ProjectsView',
+  'views/contributors/ContributorsView',
+  'views/footer/FooterView'
+], function($, _, Backbone, HomeView, ProjectsView, ContributorsView, FooterView) {
   
   var AppRouter = Backbone.Router.extend({
     routes: {
       // Define some URL routes
-      '/:idCategory/:idLesson/intro'   : 'showIntro',
-      '/:idCategory/:idLesson/:idStep' : 'showStep',
-      '/:idCategory/:idLesson/end'     : 'showEnd',
+      'projects': 'showProjects',
+      'users': 'showContributors',
       
       // Default
       '*actions': 'defaultAction'
@@ -23,9 +24,11 @@ define([
 
     var app_router = new AppRouter;
     
-    app_router.on('route:showIntro', function(idCategory,idLesson){
-        var view = new LessonIntroView();
-        view.render(idCategory,idLesson);
+    app_router.on('route:showProjects', function(){
+   
+        // Call render on the module we loaded in via the dependency array
+        var projectsView = new ProjectsView();
+        projectsView.render();
     });
 
     app_router.on('route:showContributors', function () {
