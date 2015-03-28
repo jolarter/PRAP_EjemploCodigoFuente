@@ -4,8 +4,9 @@ define([
   'underscore',
   'backbone',
   'views/lesson/lessonIntroView',
-
-], function($, _, Backbone, LessonIntroView) {
+  'views/lesson/lessonStepView',
+  'views/lesson/lessonEndView'
+], function($, _, Backbone, LessonIntroView, LessonStepView, LessonEndView) {
   
   var AppRouter = Backbone.Router.extend({
     routes: {
@@ -24,22 +25,25 @@ define([
     var app_router = new AppRouter;
     
     app_router.on('route:showIntro', function(idCategory,idLesson){
+        var idCategory = idCategory || 0;
+        var idLesson = idLesson || 0;
         var view = new LessonIntroView();
         view.render(idCategory,idLesson);
     });
 
-    app_router.on('route:showContributors', function () {
-    
-        // Like above, call render but know that this view has nested sub views which 
-        // handle loading and displaying data from the GitHub API  
-        var contributorsView = new ContributorsView();
+    app_router.on('route:showStep', function (idCategory, idLesson, idStep) {
+        var idCategory = idCategory || 0;
+        var idLesson = idLesson || 0;
+        var idStep = idStep || 0;
+        var view = new LessonStepView();
+        view.render(idCategory, idLesson, idStep);
     });
 
-    app_router.on('route:defaultAction', function (actions) {
-     
-       // We have no matching route, lets display the home page 
-        var homeView = new HomeView();
-        homeView.render();
+    app_router.on('route:showEnd', function (idCategory, idLesson) {
+        var idCategory = idCategory || 0;
+        var idLesson = idLesson || 0;
+        var view = new LessonEndView();
+        view.render(idCategory, idLesson);
     });
 
     // Unlike the above, we don't call render on this view as it will handle
