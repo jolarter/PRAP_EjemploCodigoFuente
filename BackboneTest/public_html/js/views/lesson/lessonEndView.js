@@ -5,7 +5,7 @@ define([
   'text!templates/lesson/lessonEndTemplate.html'
 ], function($, _, Backbone, SidebarView, template){
 
-  var LessonIntroView = Backbone.View.extend({
+  var LessonEndView = Backbone.View.extend({
     el: $("#container"),
     render: function(idCategory, idLesson){
 
@@ -14,6 +14,6 @@ define([
 
   });
 
-  return LessonIntroView;
+  return LessonEndView;
   
 });
