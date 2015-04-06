@@ -11,7 +11,7 @@ define([
 
         var that = this;
         //..
-        var data = {idCategory, idLesson};
+        var data = {};
         var compiledTemplate = _.template( lessonEndTemplate, data );
         $("#container").html(compiledTemplate);
     }
