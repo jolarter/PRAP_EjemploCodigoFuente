@@ -4,24 +4,14 @@ define([
   'underscore',
   'backbone',
   'views/main/mainSessionView',
-  'views/main/mainCategoryView',
-  'views/main/mainLoginView',
-  'views/main/mainChangePasswordView',
-  'views/main/mainRegisterView',
-  'views/main/mainForgotPasswordView',
-  'views/main/mainConfirmView'
-], function($, _, Backbone, MainSessionView, MainCategoryView, MainLoginView, MainChangePasswordView, MainRegisterView, MainForgotPasswordView, MainConfirmView) {
+  'views/main/mainCategoryView'
+], function($, _, Backbone, MainSessionView, MainCategoryView) {
   
   var AppRouter = Backbone.Router.extend({
     routes: {
       // Define some URL routes
       '/:idSession'   : 'showSession',
       '/category/:idCategory' : 'showCategory',
-      '/login' : 'showLogin',
-      '/change/:t' : 'showChangePassword',
-      '/register' : 'showRegister',
-      '/forgot' : 'showForgotPassword',
-      '/confirm/:t' : 'showConfirm',
       
       // Default
       '*actions': 'defaultAction'
@@ -42,33 +32,6 @@ define([
         var idCategory = idCategory || 0;
         var view = new MainCategoryView();
         view.render(idCategory);
-    });
-
-    app_router.on('route:showLogin', function () {
-        var view = new MainLoginView();
-        view.render();
-    });
-
-    app_router.on('route:showChangePassword', function (t) {
-        var t = t || "";
-        var view = new MainChangePasswordView();
-        view.render(t);
-    });
-
-    app_router.on('route:showRegister', function () {
-        var view = new MainRegisterView();
-        view.render();
-    });
-
-    app_router.on('route:showForgotPassword', function () {
-        var view = new MainForgotPasswordView();
-        view.render();
-    });
-
-    app_router.on('route:showConfirm', function (t) {
-        var t = t || "";
-        var view = new MainConfirmView();
-        view.render(t);
     });
     
     app_router.on('route:defaultAction', function (actions) {
