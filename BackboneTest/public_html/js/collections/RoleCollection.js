@@ -6,10 +6,11 @@
 
 define([
   'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/RoleModel'
+], function(_, Backbone,RoleModel) {
     var RoleCollection = Backbone.Collection.extend({
-        model: models.RoleModel,
+        model: RoleModel,
         url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.role/",
         sync: function (method, model, options) {
             options || (options = {});

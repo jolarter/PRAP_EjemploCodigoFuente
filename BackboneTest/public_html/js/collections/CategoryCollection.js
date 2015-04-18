@@ -6,8 +6,9 @@
 
 define([
   'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/CategoryModel'
+], function(_, Backbone, CategoryModel) {
     var CategoryCollection = Backbone.Collection.extend({
         model: CategoryModel,
         url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.category/",

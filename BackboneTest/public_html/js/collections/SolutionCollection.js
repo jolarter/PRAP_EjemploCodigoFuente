@@ -5,10 +5,11 @@
  */
 define([
   'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/SolutionModel'
+], function(_, Backbone,SolutionModel) {
     var SolutionCollection = Backbone.Collection.extend({
-        model: models.SolutionModel,
+        model: SolutionModel,
         url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.solution/",
         sync: function (method, model, options) {
             options || (options = {});

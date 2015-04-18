@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 define([
   'underscore',
   'backbone',
-  'models/LevelModel'
-], function(_, Backbone, LevelModel) {
-    var LevelCollection = Backbone.Collection.extend({
-        model: LevelModel,
-        url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.level/",
+  'models/TokenModel'
+], function(_, Backbone, TokenModel) {
+    var TokenCollection = Backbone.Collection.extend({
+        model: TokenModel,
+        url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.token/",
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
@@ -28,6 +29,5 @@ define([
             return result;
         }
     });
-    return LevelCollection;
+    return TokenCollection;
 });
-

@@ -6,10 +6,11 @@
 
 define([
   'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/StepModel'
+], function(_, Backbone,StepModel) {
     var StepCollection = Backbone.Collection.extend({
-        model: models.StepModel,
+        model: StepModel,
         url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.step/",
         sync: function (method, model, options) {
             options || (options = {});

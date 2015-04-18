@@ -3,14 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 define([
   'underscore',
-  'backbone',
-  'models/LevelModel'
-], function(_, Backbone, LevelModel) {
-    var LevelCollection = Backbone.Collection.extend({
-        model: LevelModel,
-        url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.level/",
+  'backbone'
+], function(_, Backbone) {
+  
+  var Token = Backbone.Model.extend({
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.token/",
+        idAttribute: 'token',
+        defaults: {
+            type: ""
+        },
+        toViewJson: function () {
+            var result = this.toJSON(); // displayName property is used to render item in the list
+            result.displayName = this.get('token');
+            return result;
+        },
+        isNew: function () {
+            // default isNew() method imlementation is
+            // based on the 'id' initialization which
+            // sometimes is required to be initialized.
+            // So isNew() is rediefined here
+            return this.notSynced;
+        },
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
@@ -24,10 +41,16 @@ define([
                     alert('Unable to fulfil the request');
                 }}
             
+            if (method == 'create') {
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.token/';
+            }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
         }
+        
+        
     });
-    return LevelCollection;
-});
 
+  return TokenModel;
+
+});

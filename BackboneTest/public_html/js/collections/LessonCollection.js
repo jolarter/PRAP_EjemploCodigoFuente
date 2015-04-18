@@ -6,10 +6,11 @@
 
 define([
   'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/LessonModel'
+], function(_, Backbone,LessonModel) {
     var LessonCollection = Backbone.Collection.extend({
-        model: models.LessonModel,
+        model: LessonModel,
         url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.lesson/",
         sync: function (method, model, options) {
             options || (options = {});
