@@ -6,7 +6,7 @@ Es importante cargar este ejemplo y examinar como está construido. Se podrá us
 Edicion.
 
 
-## Como establecer tu nombre de usuario en Git.
+## ¿Como establecer tu nombre de usuario en Git?
 
 GitHub ofrece muchas opciones de colaboración a los miembros de cada repositorio, es por esto que es importante que establezcas tu nombre y correo en Git de tal manera que los commits que hagas se relacionen con tu usuario en GitHub.
 
@@ -19,7 +19,7 @@ git config --global user.email tu-correo-en-github@mail.com
 
 Despues de esto, tus commits se relacionarán con tu usuario en GitHub.
 
-## Recursos para backbone 
+## Recursos sobre backbone 
 
 Estos son algunas páginas donde encontrar tutoriales y ayuda en general sobre Backbone.
 
