@@ -29,7 +29,7 @@ Estos son algunas páginas donde encontrar tutoriales y ayuda en general sobre B
 * [Stackoverflow](http://stackoverflow.com/) *Preguntas y respuestas sobre programación*
 * [Developing Backbone Applications](http://addyosmani.github.io/backbone-fundamentals/) *Libro sobre como desarrollar aplicaciones usando Backbone* 
 
-Adicionalmente, puedes crear un Pull request con el label `how-to` si hay algo en lo que estás estancado.
+Adicionalmente, puedes crear un issue con el label `how-to` si hay algo en lo que estás estancado.
 
 ## Recursos sobre JavaScript
 
