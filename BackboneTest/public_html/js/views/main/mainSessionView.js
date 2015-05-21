@@ -3,18 +3,17 @@ define([
   'underscore',
   'backbone',
   'text!templates/main/mainSessionTemplate.html'
+  
 ], function($, _, Backbone, mainSessionTemplate){
 
   var MainSessionView = Backbone.View.extend({
-    el: $("#container"),
-    render: function(idSession){
-
+    el: $(".navbar-wrapper"),
+    render: function(){
         var that = this;
         //..
         var data = {};
         var compiledTemplate = _.template( mainSessionTemplate, data );
         $("#container").html(compiledTemplate);
-
     }
 
   });
