@@ -133,6 +133,8 @@ body {
 }
 .lec{
     background-color: #FFFFFF;
+    margin:0;
+    padding: 0;
 }
 
     
@@ -144,8 +146,14 @@ body {
 }
 
 ul {
+    
     list-style:none;
-   
+    
+}
+
+li {
+   float: left;
+   margin-top: 10px;
 }
 
 

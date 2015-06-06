@@ -11,7 +11,7 @@ define([
 ], function(_, Backbone,UsrModel) {
     var UsrCollection = Backbone.Collection.extend({
         model: UsrModel,
-        url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.usr/",
+        url: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.usr/",
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {

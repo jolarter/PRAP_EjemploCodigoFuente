@@ -4,7 +4,7 @@ define([
 ], function(_, Backbone) {
   
   var CategoryModel = Backbone.Model.extend({
-        urlRoot: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.category/",
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.category/",
         idAttribute: 'idcategory',
         defaults: {
             name: "",
@@ -15,13 +15,13 @@ define([
             result.displayName = this.get('name');
             return result;
         },
-        isNew: function () {
+        /*isNew: function () {
             // default isNew() method imlementation is
             // based on the 'id' initialization which
             // sometimes is required to be initialized.
             // So isNew() is rediefined here
             return this.notSynced;
-        },
+        },*/
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
@@ -36,7 +36,7 @@ define([
                 }}
             
             if (method == 'create') {
-                options.url = 'http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.category/';
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.category/';
             }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;

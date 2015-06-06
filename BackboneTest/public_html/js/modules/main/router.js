@@ -22,16 +22,16 @@ define([
 
     var app_router = new AppRouter();
     
-    app_router.on('route:showSession', function(){
+    app_router.on('route:showSession', function(idSession){
         var view = new MainSessionView();
-        view.render();
+        view.render(idSession);
         
     });
 
-    app_router.on('route:showCategory', function () {
+    app_router.on('route:showCategory', function (idcategory) {
         console.log("categoria");   
         var view = new MainCategoryView();
-        view.render();
+        view.render(idcategory);
     });
     
     app_router.on('route:defaultAction', function () {

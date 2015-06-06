@@ -12,9 +12,9 @@
 .overlay .overlay-close {
 	width: 80px;
 	height: 80px;
-	position: absolute;
+	position: inherit;
 	right: 20px;
-	top: 20px;
+	top: 520px;
 	overflow: hidden;
 	border: none;
 	background: url(../..//imgs/mainPague/cross.png) no-repeat center center;
@@ -68,7 +68,7 @@
 
 /* Effects */
 .overlay-boxes {
-	background: transparent;
+    	background: transparent;
 	visibility: hidden;
 	-webkit-transition: visibility 0s 0.8s;
 	transition: visibility 0s 0.8s;

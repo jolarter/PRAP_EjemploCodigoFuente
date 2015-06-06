@@ -9,7 +9,7 @@ define([
 ], function(_, Backbone) {
   
   var UsrModel = Backbone.Model.extend({
-        urlRoot: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.usr/",
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.usr/",
         idAttribute: 'iduser',
         defaults: {
             password: "",
@@ -22,13 +22,13 @@ define([
             result.displayName = this.get('name');
             return result;
         },
-        isNew: function () {
+        /*isNew: function () {
             // default isNew() method imlementation is
             // based on the 'id' initialization which
             // sometimes is required to be initialized.
             // So isNew() is rediefined here
             return this.notSynced;
-        },
+        },*/
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
@@ -43,7 +43,7 @@ define([
                 }}
             
             if (method == 'create') {
-                options.url = 'http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.usr/';
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.usr/';
             }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
