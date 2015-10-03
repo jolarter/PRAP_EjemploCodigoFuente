@@ -25,41 +25,38 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author h4x0r
  */
 @Entity
-@Table(name = "level")
+@Table(name = "rol")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Level.findAll", query = "SELECT l FROM Level l"),
-    @NamedQuery(name = "Level.findByIdlevel", query = "SELECT l FROM Level l WHERE l.idlevel = :idlevel"),
-    @NamedQuery(name = "Level.findByName", query = "SELECT l FROM Level l WHERE l.name = :name"),
-    @NamedQuery(name = "Level.findByPoints", query = "SELECT l FROM Level l WHERE l.points = :points")})
-public class Level implements Serializable {
+    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r"),
+    @NamedQuery(name = "Rol.findByIdrol", query = "SELECT r FROM Rol r WHERE r.idrol = :idrol"),
+    @NamedQuery(name = "Rol.findByName", query = "SELECT r FROM Rol r WHERE r.name = :name")})
+public class Rol implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idlevel")
-    private Integer idlevel;
+    @Column(name = "idrol")
+    private Integer idrol;
     @Size(max = 25)
     @Column(name = "name")
     private String name;
-    @Column(name = "points")
-    private Integer points;
-    @OneToMany(mappedBy = "level")
+    @OneToMany(mappedBy = "rol")
     private Collection<Users> usersCollection;
 
-    public Level() {
+    public Rol() {
     }
 
-    public Level(Integer idlevel) {
-        this.idlevel = idlevel;
+    public Rol(Integer idrol) {
+        this.idrol = idrol;
     }
 
-    public Integer getIdlevel() {
-        return idlevel;
+    public Integer getIdrol() {
+        return idrol;
     }
 
-    public void setIdlevel(Integer idlevel) {
-        this.idlevel = idlevel;
+    public void setIdrol(Integer idrol) {
+        this.idrol = idrol;
     }
 
     public String getName() {
@@ -68,14 +65,6 @@ public class Level implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getPoints() {
-        return points;
-    }
-
-    public void setPoints(Integer points) {
-        this.points = points;
     }
 
     @XmlTransient
@@ -90,18 +79,18 @@ public class Level implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idlevel != null ? idlevel.hashCode() : 0);
+        hash += (idrol != null ? idrol.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Level)) {
+        if (!(object instanceof Rol)) {
             return false;
         }
-        Level other = (Level) object;
-        if ((this.idlevel == null && other.idlevel != null) || (this.idlevel != null && !this.idlevel.equals(other.idlevel))) {
+        Rol other = (Rol) object;
+        if ((this.idrol == null && other.idrol != null) || (this.idrol != null && !this.idrol.equals(other.idrol))) {
             return false;
         }
         return true;
@@ -109,7 +98,7 @@ public class Level implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.poli.prap.pp.data.Level[ idlevel=" + idlevel + " ]";
+        return "edu.poli.prap.pp.data.Rol[ idrol=" + idrol + " ]";
     }
     
 }

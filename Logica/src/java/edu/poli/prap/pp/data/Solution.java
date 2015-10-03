@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author User
+ * @author h4x0r
  */
 @Entity
 @Table(name = "solution")
@@ -31,11 +31,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Solution.findAll", query = "SELECT s FROM Solution s"),
     @NamedQuery(name = "Solution.findByIdsolution", query = "SELECT s FROM Solution s WHERE s.idsolution = :idsolution"),
-    @NamedQuery(name = "Solution.findByStartdate", query = "SELECT s FROM Solution s WHERE s.startdate = :startdate"),
-    @NamedQuery(name = "Solution.findByEnddate", query = "SELECT s FROM Solution s WHERE s.enddate = :enddate"),
-    @NamedQuery(name = "Solution.findByAttempt", query = "SELECT s FROM Solution s WHERE s.attempt = :attempt"),
+    @NamedQuery(name = "Solution.findByStartDate", query = "SELECT s FROM Solution s WHERE s.startDate = :startDate"),
+    @NamedQuery(name = "Solution.findByEndDate", query = "SELECT s FROM Solution s WHERE s.endDate = :endDate"),
+    @NamedQuery(name = "Solution.findByTrials", query = "SELECT s FROM Solution s WHERE s.trials = :trials"),
     @NamedQuery(name = "Solution.findByPoints", query = "SELECT s FROM Solution s WHERE s.points = :points"),
-    @NamedQuery(name = "Solution.findByIscompleted", query = "SELECT s FROM Solution s WHERE s.iscompleted = :iscompleted"),
+    @NamedQuery(name = "Solution.findByComplete", query = "SELECT s FROM Solution s WHERE s.complete = :complete"),
     @NamedQuery(name = "Solution.findByCode", query = "SELECT s FROM Solution s WHERE s.code = :code")})
 public class Solution implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -44,26 +44,26 @@ public class Solution implements Serializable {
     @NotNull
     @Column(name = "idsolution")
     private Integer idsolution;
-    @Column(name = "startdate")
+    @Column(name = "start_date")
     @Temporal(TemporalType.DATE)
-    private Date startdate;
-    @Column(name = "enddate")
+    private Date startDate;
+    @Column(name = "end_date")
     @Temporal(TemporalType.DATE)
-    private Date enddate;
-    @Column(name = "attempt")
-    private Integer attempt;
+    private Date endDate;
+    @Column(name = "trials")
+    private Integer trials;
     @Column(name = "points")
     private Integer points;
-    @Column(name = "iscompleted")
-    private Boolean iscompleted;
+    @Column(name = "complete")
+    private Boolean complete;
     @Column(name = "code")
     private Integer code;
     @JoinColumn(name = "step", referencedColumnName = "idstep")
     @ManyToOne
     private Step step;
-    @JoinColumn(name = "usr", referencedColumnName = "iduser")
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
     @ManyToOne
-    private Usr usr;
+    private Users iduser;
 
     public Solution() {
     }
@@ -80,28 +80,28 @@ public class Solution implements Serializable {
         this.idsolution = idsolution;
     }
 
-    public Date getStartdate() {
-        return startdate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartdate(Date startdate) {
-        this.startdate = startdate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Integer getAttempt() {
-        return attempt;
+    public Integer getTrials() {
+        return trials;
     }
 
-    public void setAttempt(Integer attempt) {
-        this.attempt = attempt;
+    public void setTrials(Integer trials) {
+        this.trials = trials;
     }
 
     public Integer getPoints() {
@@ -112,12 +112,12 @@ public class Solution implements Serializable {
         this.points = points;
     }
 
-    public Boolean getIscompleted() {
-        return iscompleted;
+    public Boolean getComplete() {
+        return complete;
     }
 
-    public void setIscompleted(Boolean iscompleted) {
-        this.iscompleted = iscompleted;
+    public void setComplete(Boolean complete) {
+        this.complete = complete;
     }
 
     public Integer getCode() {
@@ -136,12 +136,12 @@ public class Solution implements Serializable {
         this.step = step;
     }
 
-    public Usr getUsr() {
-        return usr;
+    public Users getIduser() {
+        return iduser;
     }
 
-    public void setUsr(Usr usr) {
-        this.usr = usr;
+    public void setIduser(Users iduser) {
+        this.iduser = iduser;
     }
 
     @Override

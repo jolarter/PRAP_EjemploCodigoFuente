@@ -5,7 +5,7 @@
  */
 package edu.poli.prap.pp.service;
 
-import edu.poli.prap.pp.data.Usr;
+import edu.poli.prap.pp.data.Users;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -21,29 +21,29 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author User
+ * @author Users
  */
 @Stateless
-@Path("edu.poli.prap.pp.data.usr")
-public class UsrFacadeREST extends AbstractFacade<Usr> {
+@Path("edu.poli.prap.pp.data.users")
+public class UsersFacadeREST extends AbstractFacade<Users> {
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
 
-    public UsrFacadeREST() {
-        super(Usr.class);
+    public UsersFacadeREST() {
+        super(Users.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(Usr entity) {
+    public void create(Users entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Integer id, Usr entity) {
+    public void edit(@PathParam("id") Integer id, Users entity) {
         super.edit(entity);
     }
 
@@ -56,21 +56,21 @@ public class UsrFacadeREST extends AbstractFacade<Usr> {
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Usr find(@PathParam("id") Integer id) {
+    public Users find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<Usr> findAll() {
+    public List<Users> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<Usr> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Users> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

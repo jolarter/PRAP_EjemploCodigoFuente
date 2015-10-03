@@ -10,8 +10,6 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,13 +17,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author User
+ * @author h4x0r
  */
 @Entity
 @Table(name = "step")
@@ -34,23 +33,23 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Step.findAll", query = "SELECT s FROM Step s"),
     @NamedQuery(name = "Step.findByIdstep", query = "SELECT s FROM Step s WHERE s.idstep = :idstep"),
     @NamedQuery(name = "Step.findByName", query = "SELECT s FROM Step s WHERE s.name = :name"),
-    @NamedQuery(name = "Step.findByChallengue", query = "SELECT s FROM Step s WHERE s.challengue = :challengue"),
+    @NamedQuery(name = "Step.findByChallenge", query = "SELECT s FROM Step s WHERE s.challenge = :challenge"),
     @NamedQuery(name = "Step.findByPoints", query = "SELECT s FROM Step s WHERE s.points = :points"),
     @NamedQuery(name = "Step.findByCode", query = "SELECT s FROM Step s WHERE s.code = :code"),
     @NamedQuery(name = "Step.findByExpression", query = "SELECT s FROM Step s WHERE s.expression = :expression")})
 public class Step implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @NotNull
     @Column(name = "idstep")
     private Integer idstep;
     @Size(max = 50)
     @Column(name = "name")
     private String name;
     @Size(max = 100)
-    @Column(name = "challengue")
-    private String challengue;
+    @Column(name = "challenge")
+    private String challenge;
     @Column(name = "points")
     private Integer points;
     @Size(max = 25)
@@ -88,12 +87,12 @@ public class Step implements Serializable {
         this.name = name;
     }
 
-    public String getChallengue() {
-        return challengue;
+    public String getChallenge() {
+        return challenge;
     }
 
-    public void setChallengue(String challengue) {
-        this.challengue = challengue;
+    public void setChallenge(String challenge) {
+        this.challenge = challenge;
     }
 
     public Integer getPoints() {

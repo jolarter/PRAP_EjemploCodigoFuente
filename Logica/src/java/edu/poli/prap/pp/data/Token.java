@@ -24,42 +24,53 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author User
+ * @author h4x0r
  */
 @Entity
 @Table(name = "token")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Token.findAll", query = "SELECT t FROM Token t"),
+    @NamedQuery(name = "Token.findByIdtoken", query = "SELECT t FROM Token t WHERE t.idtoken = :idtoken"),
     @NamedQuery(name = "Token.findByToken", query = "SELECT t FROM Token t WHERE t.token = :token"),
-    @NamedQuery(name = "Token.findByType", query = "SELECT t FROM Token t WHERE t.type = :type"),
-    @NamedQuery(name = "Token.findByStartdate", query = "SELECT t FROM Token t WHERE t.startdate = :startdate"),
-    @NamedQuery(name = "Token.findByEnddate", query = "SELECT t FROM Token t WHERE t.enddate = :enddate")})
+    @NamedQuery(name = "Token.findByTipe", query = "SELECT t FROM Token t WHERE t.tipe = :tipe"),
+    @NamedQuery(name = "Token.findByStartDate", query = "SELECT t FROM Token t WHERE t.startDate = :startDate"),
+    @NamedQuery(name = "Token.findByEndDate", query = "SELECT t FROM Token t WHERE t.endDate = :endDate")})
 public class Token implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+    @Column(name = "idtoken")
+    private Integer idtoken;
+    @Size(max = 100)
     @Column(name = "token")
     private String token;
-    @Column(name = "type")
-    private Integer type;
-    @Column(name = "startdate")
+    @Column(name = "tipe")
+    private Integer tipe;
+    @Column(name = "start_date")
     @Temporal(TemporalType.DATE)
-    private Date startdate;
-    @Column(name = "enddate")
+    private Date startDate;
+    @Column(name = "end_date")
     @Temporal(TemporalType.DATE)
-    private Date enddate;
-    @JoinColumn(name = "usr", referencedColumnName = "iduser")
+    private Date endDate;
+    @JoinColumn(name = "iduser", referencedColumnName = "iduser")
     @ManyToOne
-    private Usr usr;
+    private Users iduser;
 
     public Token() {
     }
 
-    public Token(String token) {
-        this.token = token;
+    public Token(Integer idtoken) {
+        this.idtoken = idtoken;
+    }
+
+    public Integer getIdtoken() {
+        return idtoken;
+    }
+
+    public void setIdtoken(Integer idtoken) {
+        this.idtoken = idtoken;
     }
 
     public String getToken() {
@@ -70,42 +81,42 @@ public class Token implements Serializable {
         this.token = token;
     }
 
-    public Integer getType() {
-        return type;
+    public Integer getTipe() {
+        return tipe;
     }
 
-    public void setType(Integer type) {
-        this.type = type;
+    public void setTipe(Integer tipe) {
+        this.tipe = tipe;
     }
 
-    public Date getStartdate() {
-        return startdate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartdate(Date startdate) {
-        this.startdate = startdate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Usr getUsr() {
-        return usr;
+    public Users getIduser() {
+        return iduser;
     }
 
-    public void setUsr(Usr usr) {
-        this.usr = usr;
+    public void setIduser(Users iduser) {
+        this.iduser = iduser;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (token != null ? token.hashCode() : 0);
+        hash += (idtoken != null ? idtoken.hashCode() : 0);
         return hash;
     }
 
@@ -116,7 +127,7 @@ public class Token implements Serializable {
             return false;
         }
         Token other = (Token) object;
-        if ((this.token == null && other.token != null) || (this.token != null && !this.token.equals(other.token))) {
+        if ((this.idtoken == null && other.idtoken != null) || (this.idtoken != null && !this.idtoken.equals(other.idtoken))) {
             return false;
         }
         return true;
@@ -124,7 +135,7 @@ public class Token implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.poli.prap.pp.data.Token[ token=" + token + " ]";
+        return "edu.poli.prap.pp.data.Token[ idtoken=" + idtoken + " ]";
     }
     
 }
