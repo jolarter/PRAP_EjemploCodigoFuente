@@ -75,6 +75,16 @@ public class StepFacadeREST extends AbstractFacade<Step> {
     }
 
     @GET
+    @Path("{idCategory}/{idLesson}/{garbage}")
+    @Produces({"application/xml", "application/json"})
+    public List<Step> findRange(@PathParam("idCategory") Integer idCategory, 
+                                @PathParam("idLesson") Integer idLesson, 
+                                @PathParam("garbage") Integer g) {
+        //return super.findRange(new int[]{from, to});
+        return em.createNamedQuery("Step.findByIdLesson").setParameter("idlesson", idLesson).getResultList();
+    }
+
+    @GET
     @Path("count")
     @Produces("text/plain")
     public String countREST() {

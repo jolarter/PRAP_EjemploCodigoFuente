@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Step.findAll", query = "SELECT s FROM Step s"),
     @NamedQuery(name = "Step.findByIdstep", query = "SELECT s FROM Step s WHERE s.idstep = :idstep"),
+    @NamedQuery(name = "Step.findByIdLesson", query = "SELECT s FROM Step s JOIN s.lesson l WHERE l.idlesson = :idlesson ORDER BY s.idstep"),
     @NamedQuery(name = "Step.findByName", query = "SELECT s FROM Step s WHERE s.name = :name"),
     @NamedQuery(name = "Step.findByChallenge", query = "SELECT s FROM Step s WHERE s.challenge = :challenge"),
     @NamedQuery(name = "Step.findByPoints", query = "SELECT s FROM Step s WHERE s.points = :points"),
