@@ -9,7 +9,7 @@ define([
   'backbone'
 ], function(_, Backbone) {
     var LessonModel = Backbone.Model.extend({
-        urlRoot: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.lesson/",
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.lesson/",
         idAttribute: 'idlesson',
         defaults: {
             name: "",
@@ -42,7 +42,7 @@ define([
                 }}
             
             if (method == 'create') {
-                options.url = 'http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.lesson/';
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.lesson/';
             }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;

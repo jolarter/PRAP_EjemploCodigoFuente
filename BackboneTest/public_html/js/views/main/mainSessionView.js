@@ -2,27 +2,16 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/main/mainSessionTemplate.html',
-  'models/UsrModel'
- 
+  'text!templates/main/mainSessionTemplate.html'
   
-], function($, _, Backbone, mainSessionTemplate,UsrModel){
+], function($, _, Backbone, mainSessionTemplate){
 
   var MainSessionView = Backbone.View.extend({
     el: $(".navbar-wrapper"),
-    render: function(iduser){
-        var usr = new UsrModel({iduser:iduser});
-        
-        usr.sync("read",usr,{
-            success: function (usr) {
-                    $('#name').html(usr.name)
-                }
-            }
-        );
-        
+    render: function(){
         var that = this;
-        var data = {iduser:iduser};
-        
+        //..
+        var data = {};
         var compiledTemplate = _.template( mainSessionTemplate, data );
         $("#container").html(compiledTemplate);
     }

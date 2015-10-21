@@ -10,7 +10,7 @@ define([
 ], function(_, Backbone,SolutionModel) {
     var SolutionCollection = Backbone.Collection.extend({
         model: SolutionModel,
-        url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.solution/",
+        url: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.solution/",
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {

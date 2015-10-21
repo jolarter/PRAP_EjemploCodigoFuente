@@ -11,7 +11,7 @@ define([
 ], function(_, Backbone,LessonModel) {
     var LessonCollection = Backbone.Collection.extend({
         model: LessonModel,
-        url: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.lesson/",
+        url: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.lesson/",
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {

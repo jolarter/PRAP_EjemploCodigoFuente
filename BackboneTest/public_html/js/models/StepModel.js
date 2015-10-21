@@ -10,7 +10,7 @@ define([
 ], function(_, Backbone) {
   
   var Step = Backbone.Model.extend({
-        urlRoot: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.step/",
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/",
         idAttribute: 'idstep',
         defaults: {
             code: "",
@@ -45,7 +45,9 @@ define([
                 }}
             
             if (method == 'create') {
-                options.url = 'http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.step/';
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/';
+            }else if(method == 'getStep'){
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/'+options.idCategory+'/'+options.idLesson+'/0';                
             }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
@@ -54,6 +56,6 @@ define([
         
     });
 
-  return CategoryModel;
+  return Step;
 
 });

@@ -10,7 +10,7 @@ define([
 ], function(_, Backbone) {
   
   var SolutionModel = Backbone.Model.extend({
-        urlRoot: "http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.solution/",
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.solution/",
         idAttribute: 'idsolution',
         defaults: {
             code: "",
@@ -44,7 +44,7 @@ define([
                 }}
             
             if (method == 'create') {
-                options.url = 'http://localhost:8080/practica/webresources/edu.poli.prap.pp.data.solution/';
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.solution/';
             }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;

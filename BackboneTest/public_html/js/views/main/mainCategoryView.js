@@ -2,23 +2,14 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/main/mainCategoryTemplate.html',
-  'models/CategoryModel'
+  'text!templates/main/mainCategoryTemplate.html'
   
-], function($, _, Backbone, mainCategoryTemplate,CategoryModel){
+], function($, _, Backbone, mainCategoryTemplate){
 
   var MainCategoryView = Backbone.View.extend({
     el: $(".row"),
-    render: function(idcategory){
-        var ctry = new CategoryModel({idcategory:idcategory});
-        
-        ctry.sync("read",ctry,{
-            success: function (ctry) {
-                    $('#name').html(ctry.name);
-                    $('#description').html(ctry.description);
-                }
-            }
-        );
+    render: function(){
+
         var that = this;
         //..
         var data = {};

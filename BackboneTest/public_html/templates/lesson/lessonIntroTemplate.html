@@ -1,3 +1,10 @@
 <div class="main">
-
+<ol class="nav nav-sidebar">
+    <% _.each(steps,function(paso){ %>
+     <li><a href="#<%=idCategory%>/<%=idLesson%>/<%=paso.idstep%>"><%=paso.name%></a></li>
+    <% }); %>
+    <!--<li><a href="#Final" hreflang="../../imgs/estadistica.png" >Final</a></li>-->
+</ol>
 </div>
+
+ 

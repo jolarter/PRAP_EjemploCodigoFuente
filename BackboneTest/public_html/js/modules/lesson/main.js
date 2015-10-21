@@ -5,11 +5,16 @@
 // Their usage will become more apparent futher along in the tutorial.
 require.config({
   baseUrl: "../../js",
+  shim : {
+    'bootstrap' : { 'deps' :['jquery'] }
+  },
   paths: {
-    jquery: 'libs/jquery/jquery-min',
+    bootstrap: 'libs/lesson/bootstrap.min.js',
+    jquery: 'libs/jquery/jquery-2.1.3.min',
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone-min',
     templates: '../templates'
+    
   }
 
 });

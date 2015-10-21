@@ -15,13 +15,13 @@ define([
             result.displayName = this.get('name');
             return result;
         },
-        /*isNew: function () {
+        isNew: function () {
             // default isNew() method imlementation is
             // based on the 'id' initialization which
             // sometimes is required to be initialized.
             // So isNew() is rediefined here
             return this.notSynced;
-        },*/
+        },
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
