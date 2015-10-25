@@ -1,3 +1,7 @@
+/**
+ * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
+ */
+
 /* global common_libs, Backbone */
 
 define([

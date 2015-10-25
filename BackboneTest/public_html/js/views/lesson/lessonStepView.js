@@ -1,3 +1,7 @@
+/**
+ * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
+ */
+
 define([
     'text!templates/lesson/lessonStepTemplate.html',
     'models/StepModel',

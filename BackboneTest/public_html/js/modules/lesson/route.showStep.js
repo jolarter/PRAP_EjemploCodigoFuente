@@ -1,3 +1,7 @@
+/**
+ * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
+ */
+
 define(['views/lesson/lessonStepView'], function (LessonStepView) {
     return function (app_router, idCategory, idLesson, idStep) {
         idCategory = idCategory || 0;

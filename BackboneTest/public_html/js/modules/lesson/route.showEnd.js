@@ -1,3 +1,7 @@
+/**
+ * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
+ */
+
 define(['views/lesson/lessonEndView'], function (LessonEndView) {
     return function (app_router, idCategory, idLesson) {
         idCategory = idCategory || 0;
