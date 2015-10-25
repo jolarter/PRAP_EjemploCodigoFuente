@@ -17,8 +17,9 @@ define([
         var step = new StepModel({idstep:idStep});
         step.sync("read",step,
             {success: function (step) {
-                    $('#reto').html(step.challenge),
-                    $('#pista').html(step.code),
+                    $('#reto').html(step.challenge);
+                    $('#pista').html(step.code);
+                    ace.edit("editor").session.setValue(step.code);
                     $('#puntaje').html(step.points);
                     $('#topmenu2').html(step.name);
             }
