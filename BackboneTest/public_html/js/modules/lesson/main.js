@@ -1,30 +1,51 @@
-// Author: Thomas Davis <thomasalwyndavis@gmail.com>
-// Filename: main.js
+/* global common_libs, Backbone */
 
-// Require.js allows us to configure shortcut alias
-// Their usage will become more apparent futher along in the tutorial.
-require.config({
-  baseUrl: "../../js",
-  shim : {
-    'bootstrap' : { 'deps' :['jquery'] }
-  },
-  paths: {
-    bootstrap: 'libs/lesson/bootstrap.min.js',
-    jquery: 'libs/jquery/jquery-2.1.3.min',
-    underscore: 'libs/underscore/underscore-min',
-    backbone: 'libs/backbone/backbone-min',
-    templates: '../templates'
-    
-  }
+/**
+ * Load common code that includes config, then load the app logic for this page.
+ */
+requirejs(['../../common/common'], function () {
+    /**
+     * the main function
+     */
+    requirejs(common_libs, function () {
 
-});
+        var AppRouter = Backbone.Router.extend({
+            routes: {
+                // Define some URL routes
+                ':idCategory/:idLesson/intro': 'showIntro',
+                ':idCategory/:idLesson/end': 'showEnd',
+                ':idCategory/:idLesson/:idStep': 'showStep',
+                '': 'default'
+                        // Default
+                        //'*actions': 'showStep'
+            }
+        });
 
-require([
-  // Load our app module and pass it to our definition function
-  'modules/lesson/app'
+        var app_router = new AppRouter;
 
-], function(App){
-  // The "app" dependency is passed in as "App"
-  // Again, the other dependencies passed in are not "AMD" therefore don't pass a parameter to this function
-  App.initialize();
+        app_router.on('route:showIntro', function (idCategory, idLesson) {
+            requirejs(['app/lesson/route.showIntro'], function (callback) {
+                callback(app_router, idCategory, idLesson);
+            });
+        });
+        app_router.on('route:default', function () {
+            requirejs(['app/lesson/route.default'], function (callback) {
+                callback(app_router);
+            });
+        });
+
+        app_router.on('route:showStep', function (idCategory, idLesson, idStep) {
+            requirejs(['app/lesson/route.showStep'], function (callback) {
+                callback(app_router, idCategory, idLesson, idStep);
+            });
+        });
+
+        app_router.on('route:showEnd', function (idCategory, idLesson) {
+            requirejs(['app/lesson/route.showEnd'], function (callback) {
+                callback(app_router, idCategory, idLesson);
+            });
+        });
+
+        Backbone.history.start();
+    });
 });

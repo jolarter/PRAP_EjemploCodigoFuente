@@ -1,13 +1,12 @@
+/* global common_libs, Backbone, _ */
+
 define([
-    'jquery',
-    'underscore',
-    'backbone',
     'text!templates/lesson/lessonIntroTemplate.html',
     'models/CategoryModel',
     'models/LessonModel',
     'collections/StepCollection',
     'views/lesson/lessonDownBarView'
-], function ($, _, Backbone, lessonIntroTemplate, CategoryModel, LessonModel, StepCollection, LessonDownBarView) {
+], function (lessonIntroTemplate, CategoryModel, LessonModel, StepCollection, LessonDownBarView) {
 
     var LessonIntroView = Backbone.View.extend({
         el: $("#container"),
@@ -15,7 +14,7 @@ define([
             this.l = new LessonDownBarView();
             this.l.idLesson = idLesson;
             this.l.idCategory = idCategory;
-          
+
             var that = this;
             var category = new CategoryModel({idcategory: idCategory});
             category.fetch({success: function (cat) {
@@ -27,7 +26,7 @@ define([
 
                 }});
 
-             
+
             var stepcollec = new StepCollection();
             stepcollec.sync("getStep", stepcollec,
                     {
@@ -40,14 +39,14 @@ define([
                             $('#container').html();
                         },
                         error: function () {
-                            alert('hola')
+                            alert('hola');
                         },
                         idCategory: idCategory, idLesson: idLesson
                     }
             );
         }
-        
-        
+
+
 
     });
     return LessonIntroView;
