@@ -1,14 +1,14 @@
 CREATE TABLE rol
   (
      idrol INT UNIQUE,
-     name  VARCHAR(25),
+     name  VARCHAR(50),
      PRIMARY KEY(idrol)
   )
 
 CREATE TABLE level
   (
      idlevel INT UNIQUE,
-     name    VARCHAR(25),
+     name    VARCHAR(50),
      points  INT,
      PRIMARY KEY(idlevel)
   )
@@ -42,8 +42,9 @@ CREATE TABLE token
 CREATE TABLE category
   (
      idcategory  INT UNIQUE,
-     name        VARCHAR(25),
-     description VARCHAR(250),
+     name        VARCHAR(50),
+     description TEXT,
+     imgurl      VARCHAR(250),
      PRIMARY KEY(idcategory)
   )
 
@@ -51,8 +52,8 @@ CREATE TABLE lesson
   (
      idlesson     INT UNIQUE,
      name         VARCHAR(100),
-     description  VARCHAR(250),
-     introduction VARCHAR(250),
+     description  TEXT,
+     introduction TEXT,
      category     INT,
      PRIMARY KEY(idlesson),
      FOREIGN KEY(category) REFERENCES category(idcategory)
@@ -62,10 +63,11 @@ CREATE TABLE step
   (
      idstep     INT UNIQUE,
      name       VARCHAR(50),
-     challenge  VARCHAR(100),
+     challenge  TEXT,
      points     INT,
-     code       VARCHAR(25),
-     expression VARCHAR(100),
+     code       TEXT,
+     expression TEXT,
+     eval       TEXT,
      lesson     INT,
      PRIMARY KEY(idstep),
      FOREIGN KEY(lesson) REFERENCES lesson(idlesson)
@@ -79,7 +81,7 @@ CREATE TABLE solution
      trials     INT,
      points     INT,
      complete   BIT,
-     code       INT,
+     code       TEXT,
      step       INT,
      iduser     INT,
      PRIMARY KEY(idsolution),
