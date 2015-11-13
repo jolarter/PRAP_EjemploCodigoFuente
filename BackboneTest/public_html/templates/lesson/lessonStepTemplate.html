@@ -1,26 +1,24 @@
 <div class="container separate-rows" >
-    <h2 id='titulo' ></h2>
+    <h2 id="titulo"></h2>
     <div class="row show-grid">
         <!--parte izquierda -->
         <div class="col-md-5">
             <div>		
                 <h3>Reto</h3>
-                <p id='reto'>
-
+                <p id="reto">
+                    <%= challenge %>
                 </p>
             </div>
         </div>
 
         <!--parte derecha -->
         <div class="col-md-6">
-            <!-- PARTE DE LA CONSOLA-->
-            <!--<h1>Espacio de la consola</h1>-->
             <pre id="editor"></pre>
         </div>
     </div>
     <div class="row show-gred">
         <div  class="col-md-6" style="text-align: left">
-            <button class="btn btn-primary" id="validate"> Validar</button><h3>Puntaje: <span id='puntaje'></span></h3>
+            <button class="btn btn-primary" id="validate"> Validar</button><h3>Puntaje: <span id='puntaje'><%= points %></span></h3>
         </div>
     </div>    
 </div>

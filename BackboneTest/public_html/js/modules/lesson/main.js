@@ -16,40 +16,54 @@ requirejs(['../../common/common'], function () {
         var AppRouter = Backbone.Router.extend({
             routes: {
                 // Define some URL routes
+                'login': 'showLogin',
                 ':idCategory/:idLesson/intro': 'showIntro',
                 ':idCategory/:idLesson/end': 'showEnd',
                 ':idCategory/:idLesson/:idStep': 'showStep',
                 '': 'default'
                         // Default
                         //'*actions': 'showStep'
+            },
+            /**
+             * filter before route
+             * @param {type} route
+             * @param {type} params
+             * @returns {Boolean}
+             */
+            before: function (route, params) {
+                console.log(route, params);
+            },
+            /*
+             * Router functions
+             */
+            default: function () {
+                requirejs(['app/lesson/route.default'], function (callback) {
+                    callback(app_router);
+                });
+            },
+            showLogin: function () {
+                requirejs(['app/lesson/route.showLogin'], function (callback) {
+                    callback(app_router);
+                });
+            },
+            showIntro: function (idCategory, idLesson) {
+                requirejs(['app/lesson/route.showIntro'], function (callback) {
+                    callback(app_router, idCategory, idLesson);
+                });
+            },
+            showStep: function (idCategory, idLesson, idStep) {
+                requirejs(['app/lesson/route.showStep'], function (callback) {
+                    callback(app_router, idCategory, idLesson, idStep);
+                });
+            },
+            sshowEnd: function (idCategory, idLesson) {
+                requirejs(['app/lesson/route.showEnd'], function (callback) {
+                    callback(app_router, idCategory, idLesson);
+                });
             }
         });
 
         var app_router = new AppRouter;
-
-        app_router.on('route:showIntro', function (idCategory, idLesson) {
-            requirejs(['app/lesson/route.showIntro'], function (callback) {
-                callback(app_router, idCategory, idLesson);
-            });
-        });
-        app_router.on('route:default', function () {
-            requirejs(['app/lesson/route.default'], function (callback) {
-                callback(app_router);
-            });
-        });
-
-        app_router.on('route:showStep', function (idCategory, idLesson, idStep) {
-            requirejs(['app/lesson/route.showStep'], function (callback) {
-                callback(app_router, idCategory, idLesson, idStep);
-            });
-        });
-
-        app_router.on('route:showEnd', function (idCategory, idLesson) {
-            requirejs(['app/lesson/route.showEnd'], function (callback) {
-                callback(app_router, idCategory, idLesson);
-            });
-        });
-
         Backbone.history.start();
     });
 });

@@ -11,6 +11,9 @@ requirejs.config({
             deps: ['jquery', 'underscore'],
             exports: 'Backbone'
         },
+        'backbone_router_filter': {
+            deps: ['backbone', 'underscore'],
+        },
         'underscore': {
             exports: '_'
         },
@@ -41,6 +44,7 @@ requirejs.config({
         jquery: 'jquery/jquery-2.1.4.min',
         underscore: 'underscore/underscore-min',
         backbone: 'backbone/backbone-min',
+        backbone_router_filter: 'backbone/plugins/backbone.routefilter',
         bootstrap: 'bootstrap/bootstrap.min',
         ace: 'ace/src-min-noconflict/ace',
         /*
@@ -59,4 +63,4 @@ requirejs.config({
  * common dependencies to inject in all modules
  * @type Array
  */
-var common_libs = ['jquery', 'backbone', 'underscore', 'ace'];
+var common_libs = ['jquery', 'backbone', 'underscore', 'backbone_router_filter', 'ace'];

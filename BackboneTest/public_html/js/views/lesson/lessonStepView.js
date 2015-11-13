@@ -1,79 +1,98 @@
+/* global Backbone, _ */
+
 /**
  * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
  */
 
 define([
     'text!templates/lesson/lessonStepTemplate.html',
-    'models/StepModel',
-    'models/LessonModel',
-    'views/lesson/lessonDownBarView'
-], function (lessonStepTemplate, StepModel, LessonModel, LessonDownBarView) {
+], function (lessonStepTemplate) {
 
     var LessonStepView = Backbone.View.extend({
-        el: $("#container"),
+        /*
+         * variables
+         */
+        code: '',
+        regex: '',
+        func: '',
+        editor: '',
+        /*
+         * configuration of view
+         */
+        el: $('#container'),
+        template: _.template(lessonStepTemplate),
+        events: {
+            'click #validate': 'validateChallenge'
+        },
+        /*
+         * methods
+         */
+        initialize: function () {
+
+        },
+        /*
+         * render view
+         * @param {type} idCategory
+         * @param {type} idLesson
+         * @param {type} idStep
+         * @returns {undefined}
+         */
         render: function (idCategory, idLesson, idStep) {
+            // alias
+            var self = this;
 
-            var code, regex, func;
-            var editor;
+            // get data from server
+            this.model.fetch({
+                success: function (model, response) {
+                    // fill some variables
+                    self.code = response.code;
+                    self.func = response.eval;
+                    self.regex = response.expression;
 
-            var lesson = new LessonModel({idcategory: idCategory, idlesson: idLesson});
-            var step = new StepModel({idstep: idStep});
+                    // add template to DOM
+                    self.$el.html(self.template(response));
 
-            step.sync("read", step,
-                    {success: function (step) {
-
-                            code = step.code;
-                            func = step.eval;
-                            regex = step.expression;
-
-                            editor = ace.edit("editor");
-                            editor.setOptions({
-                                maxLines: Infinity,
-                                theme: "ace/theme/twilight",
-                                mode: "ace/mode/java"
-                            });
-
-                            $('#reto').html(step.challenge);
-                            editor.session.setValue(step.code);
-                            $('#puntaje').html(step.points);
-                            $('#topmenu2').html(step.name);
-                        }
+                    // setup the code editor
+                    self.editor = ace.edit('editor');
+                    self.editor.setOptions({
+                        maxLines: Infinity,
+                        theme: 'ace/theme/twilight',
+                        mode: 'ace/mode/java'
                     });
-
-            //  var that = this;          
-            var data = {step: step};
-            var compiledTemplate = _.template(lessonStepTemplate, data);
-            $("#container").html(compiledTemplate);
-
-            $('#validate').click(function () {
-
-                var myRegexp = new RegExp(regex, 'gi');
-                var match = myRegexp.exec(editor.getValue());
-
-                var real_func = eval('[' + func + ']')[0];
-
-                if (match !== null) {
-
-                    var args = [];
-
-                    for (var i = 1; i < match.length; i++) {
-                        args.push(match[i]);
-                    }
-                    if (real_func.apply(this, args) === true) {
-                        alert('Pasaste el reto!');
-                        return;
-                    }
+                    // set the code of challenge
+                    self.editor.session.setValue(response.code);
+                    // set the name of challenge
+                    $('#topmenu2').html(response.name);
                 }
-
-                alert('Muy mal, sigue intentando!');
-
             });
+        },
+        /**
+         * validate challenge
+         * @returns {undefined}
+         */
+        validateChallenge: function () {
+            var myRegexp = new RegExp(this.regex, 'gi');
+            var match = myRegexp.exec(this.editor.getValue());
 
+            // anonymous function
+            var real_func = eval('[' + this.func + ']')[0];
+
+            if (match !== null) {
+
+                var args = [];
+
+                for (var i = 1; i < match.length; i++) {
+                    args.push(match[i]);
+                }
+                if (real_func.apply(this, args) === true) {
+                    alert('Pasaste el reto!');
+                    return;
+                }
+            }
+
+            alert('Muy mal, sigue intentando!');
         }
     });
-
-
-
 
     return LessonStepView;
 });
