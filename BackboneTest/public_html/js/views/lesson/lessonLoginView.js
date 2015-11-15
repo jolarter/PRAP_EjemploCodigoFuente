@@ -24,12 +24,21 @@ define([
         /*
          * methods
          */
+        /**
+         * render view
+         * @returns {undefined}
+         */
         render: function () {
             // hide dashboard
             this.dash_html = this.$el.html();
             // show login
             this.$el.html(this.template());
-            return this;
+        },
+        /**
+         * on close view
+         */
+        close: function () {
+            this.undelegateEvents(); //undelegate events in variable 'events'
         },
         loginBtn: function () {
             login.newLogin();
@@ -41,5 +50,6 @@ define([
             return false;
         }
     });
+
     return LessonLoginView;
 });

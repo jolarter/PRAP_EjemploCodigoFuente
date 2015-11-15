@@ -69,6 +69,12 @@ define([
             });
         },
         /**
+         * on close view
+         */
+        close: function () {
+            this.undelegateEvents(); //undelegate events in variable 'events'
+        },
+        /**
          * validate challenge
          * @returns {undefined}
          */

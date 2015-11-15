@@ -23,7 +23,14 @@ requirejs(['../../common/common'], function () {
             /*
              * variables
              */
+            /**
+             * history of fragments
+             */
             history: [],
+            /**
+             * trash
+             */
+            trash: [],
             /*
              * configuration of router
              */
@@ -42,10 +49,22 @@ requirejs(['../../common/common'], function () {
              * @returns {Boolean}
              */
             before: function (route, params) {
+
                 // check that user enter correctly to webpage
                 if (this.history.length === 0 && route !== '') {
                     this.navigate('', {trigger: true});
                     return false;
+                }
+
+                // pick up the memory trash
+                if (this.trash.length > 0) {
+                    for (var i = 0; i < this.trash.length; i++) {
+                        if (this.trash[i] && this.trash[i].destroy) {
+                            this.trash[i].destroy();
+                        }
+                    }
+                    // clear trash
+                    this.trash = [];
                 }
 
                 // log history off urls
@@ -63,28 +82,33 @@ requirejs(['../../common/common'], function () {
              * methods
              */
             default: function () {
+                var self = this;
                 requirejs(['app/lesson/route.default'], function (callback) {
-                    callback();
+                    self.trash.push(callback());
                 });
             },
             showLogin: function () {
+                var self = this;
                 requirejs(['app/lesson/route.showLogin'], function (callback) {
-                    callback();
+                    self.trash.push(callback());
                 });
             },
             showIntro: function (idCategory, idLesson) {
+                var self = this;
                 requirejs(['app/lesson/route.showIntro'], function (callback) {
-                    callback(idCategory, idLesson);
+                    self.trash.push(callback(idCategory, idLesson));
                 });
             },
             showStep: function (idCategory, idLesson, idStep) {
+                var self = this;
                 requirejs(['app/lesson/route.showStep'], function (callback) {
-                    callback(idCategory, idLesson, idStep);
+                    self.trash.push(callback(idCategory, idLesson, idStep));
                 });
             },
             showEnd: function (idCategory, idLesson) {
+                var self = this;
                 requirejs(['app/lesson/route.showEnd'], function (callback) {
-                    callback(idCategory, idLesson);
+                    self.trash.push(callback(idCategory, idLesson));
                 });
             }
         });
