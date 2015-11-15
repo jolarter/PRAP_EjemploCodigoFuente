@@ -2,8 +2,10 @@
  * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
  */
 
+/* global router */
+
 define(function () {
-    return function (app_router) {
-        app_router.navigate('#1/1/intro', {trigger: true});
+    return function () {
+        router.navigate('challenge/1/1', {trigger: true});
     };
 });

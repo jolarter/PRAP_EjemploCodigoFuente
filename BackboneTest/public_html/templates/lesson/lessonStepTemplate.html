@@ -1,25 +1,16 @@
-<div class="container separate-rows" >
-    <h2 id="titulo"></h2>
-    <div class="row show-grid">
-        <!--parte izquierda -->
-        <div class="col-md-5">
-            <div>		
-                <h3>Reto</h3>
-                <p id="reto">
-                    <%= challenge %>
-                </p>
-            </div>
-        </div>
-
-        <!--parte derecha -->
-        <div class="col-md-6">
-            <pre id="editor"></pre>
-        </div>
+<div class="row">
+    <!--parte izquierda -->
+    <div class="col-md-6">	
+        <h3>Reto</h3>
+        <p id="reto">
+            <%= challenge %>
+        </p>
+        <h3>Puntaje: <span id='puntaje'><%= points %></span></h3>
+        <button class="btn btn-primary" id="validate"> Validar</button>
     </div>
-    <div class="row show-gred">
-        <div  class="col-md-6" style="text-align: left">
-            <button class="btn btn-primary" id="validate"> Validar</button><h3>Puntaje: <span id='puntaje'><%= points %></span></h3>
-        </div>
-    </div>    
-</div>
 
+    <!--parte derecha -->
+    <div class="col-md-6">
+        <pre id="editor"></pre>
+    </div>
+</div>

@@ -57,8 +57,10 @@ define([
                     self.editor.setOptions({
                         maxLines: Infinity,
                         theme: 'ace/theme/twilight',
-                        mode: 'ace/mode/java'
+                        mode: 'ace/mode/java',
                     });
+                    self.editor.resize();
+                    self.editor.session.setUseWrapMode(true);
                     // set the code of challenge
                     self.editor.session.setValue(response.code);
                     // set the name of challenge

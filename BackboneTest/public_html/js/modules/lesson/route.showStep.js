@@ -6,7 +6,7 @@ define([
     'models/StepModel',
     'views/lesson/lessonStepView'
 ], function (StepModel, LessonStepView) {
-    return function (app_router, idCategory, idLesson, idStep) {
+    return function (idCategory, idLesson, idStep) {
         idCategory = idCategory || 0;
         idLesson = idLesson || 0;
         idStep = idStep || 0;

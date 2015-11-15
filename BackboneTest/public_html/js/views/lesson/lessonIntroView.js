@@ -13,7 +13,7 @@ define([
 ], function (lessonIntroTemplate, CategoryModel, LessonModel, StepCollection, LessonDownBarView) {
 
     var LessonIntroView = Backbone.View.extend({
-        el: $("#container"),
+        el: $("#leftmenu"),
         render: function (idCategory, idLesson) {
             this.l = new LessonDownBarView();
             this.l.idLesson = idLesson;
@@ -27,31 +27,25 @@ define([
             var lesson = new LessonModel({idlesson: idLesson});
             lesson.sync("read", lesson, {success: function (less) {
                     $('#topmenu1').html(less.name);
-
                 }});
 
-
             var stepcollec = new StepCollection();
-            stepcollec.sync("getStep", stepcollec,
-                    {
-                        success: function (step) {
-                            var data = {idCategory: idCategory, idLesson: idLesson, steps: step};
-                            that.l.idStep = step[0].idstep;
-                            var template = _.template(lessonIntroTemplate);
-                            var compiledTemplate = template(data);
-                            $('#leftmenu').html(compiledTemplate);
-                            $('#container').html();
-                        },
-                        error: function () {
-                            alert('hola');
-                        },
-                        idCategory: idCategory, idLesson: idLesson
-                    }
-            );
+            stepcollec.sync("getStep", stepcollec, {
+                success: function (step) {
+                    var data = {idCategory: idCategory, idLesson: idLesson, steps: step};
+                    that.l.idStep = step[0].idstep;
+                    var template = _.template(lessonIntroTemplate);
+                    var compiledTemplate = template(data);
+                    that.$el.html(compiledTemplate);
+                    $('#container').html();
+                },
+                error: function () {
+                    alert('hola');
+                },
+                idCategory: idCategory, idLesson: idLesson
+            });
         }
-
-
-
     });
+
     return LessonIntroView;
 });
