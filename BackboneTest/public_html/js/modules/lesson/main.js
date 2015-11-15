@@ -2,7 +2,7 @@
  * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
  */
 
-/* global common_libs, Backbone */
+/* global common_libs, Backbone, _ */
 
 /**
  * the router of module
@@ -21,6 +21,10 @@ requirejs(['../../common/common'], function () {
 
         var AppRouter = Backbone.Router.extend({
             /*
+             * variables
+             */
+            history: [],
+            /*
              * configuration of router
              */
             routes: {
@@ -38,11 +42,22 @@ requirejs(['../../common/common'], function () {
              * @returns {Boolean}
              */
             before: function (route, params) {
+                // check that user enter correctly to webpage
+                if (this.history.length === 0 && route !== '') {
+                    this.navigate('', {trigger: true});
+                    return false;
+                }
+
+                // log history off urls
+                this.history.push({fragment: route, params: params});
                 console.log(route, params);
+
+                // check if logged
                 if (!login.isLogged() && route !== 'login') {
                     this.navigate('#login', {trigger: true});
                     return false;
                 }
+
             },
             /*
              * methods
