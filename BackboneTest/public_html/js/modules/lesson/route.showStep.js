@@ -7,11 +7,11 @@ define([
     'views/lesson/lessonStepView'
 ], function (StepModel, LessonStepView) {
     return function (idCategory, idLesson, idStep) {
-        idCategory = idCategory || 0;
-        idLesson = idLesson || 0;
-        idStep = idStep || 0;
+        idCategory = parseInt(idCategory || 0);
+        idLesson = parseInt(idLesson || 0);
+        idStep = parseInt(idStep || 0);
         // create new view (pass a model required)
-        var view = new LessonStepView({model: new StepModel({idstep: idStep})});
+        var view = new LessonStepView();
         // render now
         view.render(idCategory, idLesson, idStep);
 
@@ -20,6 +20,7 @@ define([
          */
         this.destroy = function () {
             view.close();
+            view = null;
             console.log('recycled step');
         };
 

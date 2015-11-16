@@ -5,35 +5,47 @@
  */
 
 define([
-  'underscore',
-  'backbone',
-  'models/StepModel'
-], function(_, Backbone,StepModel) {
+    'underscore',
+    'backbone',
+    'models/StepModel'
+], function (_, Backbone, StepModel) {
+    var instance = null;
+
     var StepCollection = Backbone.Collection.extend({
         model: StepModel,
-        url: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/",
-        
-           //options no esta trayendo nada --------------------------   
-           
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step",
+        //options no esta trayendo nada --------------------------   
+
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
                 error: function (jqXHR, textStatus, errorThrown) {
-                    // TODO: put your error handling code here
-                    // If you use the JS client from the different domain
-                    // (f.e. locally) then Cross-origin resource sharing 
-                    // headers has to be set on the REST server side.
-                    // Otherwise the JS client has to be copied into the
-                    // some (f.e. the same) Web project on the same domain
                     alert('Unable to fulfil the request');
-                }}
-            if(method == 'getStep'){
-                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/'+options.idCategory+'/'+options.idLesson+'/0';                
+                }};
+            switch (method) {
+                case 'read':
+                    /*
+                     * custom methods
+                     */
+                    if (options.func && options.func === 'getAll') {
+                        options.url = _.result(this, 'urlRoot') + '/getall/' + options.id_category + '/' + options.id_lesson;
+                        console.log(_.result(this, 'urlRoot'), options.url);
+                    }
+                    break;
             }
-            var result = Backbone.sync(method, model, _.extend(options, errorHandler));
-            return result;
+
+            return Backbone.sync(method, model, _.extend(options, errorHandler));
         }
     });
 
-    return StepCollection;
+    StepCollection.getInstance = function () {
+        // summary:
+        //      Gets an instance of the singleton. It is better to use 
+        if (instance === null) {
+            instance = new StepCollection();
+        }
+        return instance;
+    };
+
+    return StepCollection.getInstance();
 });

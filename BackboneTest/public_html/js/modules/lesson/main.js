@@ -17,7 +17,10 @@ requirejs(['../../common/common'], function () {
     /**
      * the main function
      */
-    requirejs(['app/lesson/login'].concat(common_libs), function (login) {
+    requirejs(['app/lesson/login',
+        'collections/StepCollection',
+        'collections/SolutionCollection'].concat(common_libs), function (Login, StepCollection, SolutionCollection) {
+        var data_loaded = false;
 
         var AppRouter = Backbone.Router.extend({
             /*
@@ -50,12 +53,6 @@ requirejs(['../../common/common'], function () {
              */
             before: function (route, params) {
 
-                // check that user enter correctly to webpage
-                if (this.history.length === 0 && route !== '') {
-                    this.navigate('', {trigger: true});
-                    return false;
-                }
-
                 // pick up the memory trash
                 if (this.trash.length > 0) {
                     for (var i = 0; i < this.trash.length; i++) {
@@ -67,15 +64,48 @@ requirejs(['../../common/common'], function () {
                     this.trash = [];
                 }
 
-                // log history off urls
-                this.history.push({fragment: route, params: params});
-                console.log(route, params);
-
                 // check if logged
-                if (!login.isLogged() && route !== 'login') {
+                if (!Login.isLogged() && route !== 'login') {
                     this.navigate('#login', {trigger: true});
                     return false;
                 }
+
+                /*
+                 * custom rules
+                 */
+                // load nesesary data
+                if (!data_loaded && (route === 'challenge/:idCategory/:idLesson' || route === 'challenge/:idCategory/:idLesson/:idStep')) {
+
+                    // get all steps from server
+                    StepCollection.fetch({
+                        func: 'getAll',
+                        async: false,
+                        id_category: params[0],
+                        id_lesson: params[1],
+                        success: function (collection, response) {
+                            //...
+                        }
+                    });
+
+                    // get all solutions from server
+                    SolutionCollection.fetch({
+                        func: 'getAll',
+                        async: false,
+                        id_user: Login.getUserId(),
+                        success: function (collection, response) {
+                            //...
+                        }
+                    });
+                    data_loaded = true;
+                    this.navigate('challenge/' + params[0] + '/' + params[1], {trigger: true, replace: true});
+                    if (params.length === 3) {
+                        this.navigate('challenge/' + params[0] + '/' + params[1] + '/' + params[2], {replace: true});
+                    }
+                }
+
+                // log history off urls
+                this.history.push({fragment: route, params: params});
+                console.log(route, params);
 
             },
             /*
@@ -112,7 +142,6 @@ requirejs(['../../common/common'], function () {
                 });
             }
         });
-
         router = new AppRouter;
         Backbone.history.start();
     });

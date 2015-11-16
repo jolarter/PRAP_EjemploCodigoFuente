@@ -10,11 +10,15 @@ define(function () {
         var cookie_name = 'logintest';
 
         this.newLogin = function () {
-            $.cookie(cookie_name, 'logged!');
+            $.cookie(cookie_name, '1');
         };
 
         this.isLogged = function () {
             return $.cookie('logintest');
+        };
+
+        this.getUserId = function () {
+            return parseInt($.cookie('logintest'));
         };
 
     };

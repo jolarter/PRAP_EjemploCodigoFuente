@@ -2,33 +2,54 @@
  * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
  */
 
-/* global common_libs, Backbone */
+/* global common_libs, Backbone, router */
 
-define([
-    'collections/StepCollection'
-], function (StepCollection) {
-    window.idStep = new StepCollection();
+define(function () {
+    var instance = null;
+
     var LessonDownBarView = Backbone.View.extend({
-        idLesson: '',
-        idCategory: '',
-        idStep: '',
-        arr: null,
-        // arr:stepcollec,
-
-
-
-
-        el: $("#barrainferior"),
-        render: function (idCategory, idLesson) {
-
-        },
+        /*
+         * variables
+         */
+        id_category: null,
+        id_lesson: null,
+        id_step: null,
+        end_step: null,
+        /*
+         * configuration of view
+         */
+        el: $("#downbar"),
         events: {
-            "click #btnnext": "next"
-
+            'click #next_step': 'next'
         },
-        next: function (evt) {
-            location.href = "#" + this.idCategory + "/" + this.idLesson + "/" + this.idStep;
+        /*
+         * methods
+         */
+        next: function () {
+            router.navigate('#challenge/' + this.id_category + "/" + this.id_lesson + "/" + this.id_step, {trigger: true});
+        },
+        setIdCategory: function (id_category) {
+            this.id_category = id_category;
+        },
+        setIdLesson: function (id_lesson) {
+            this.id_lesson = id_lesson;
+        },
+        setIdStep: function (id_step) {
+            this.id_step = id_step;
+        },
+        setEndStep: function (end_step) {
+            this.end_step = end_step;
         }
     });
-    return LessonDownBarView;
+
+    LessonDownBarView.getInstance = function () {
+        // summary:
+        //      Gets an instance of the singleton. It is better to use 
+        if (instance === null) {
+            instance = new LessonDownBarView();
+        }
+        return instance;
+    };
+
+    return LessonDownBarView.getInstance();
 });

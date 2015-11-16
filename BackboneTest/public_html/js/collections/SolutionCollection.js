@@ -4,29 +4,45 @@
  * and open the template in the editor.
  */
 define([
-  'underscore',
-  'backbone',
-  'models/SolutionModel'
-], function(_, Backbone,SolutionModel) {
+    'underscore',
+    'backbone',
+    'models/SolutionModel'
+], function (_, Backbone, SolutionModel) {
+    var instance = null;
+
     var SolutionCollection = Backbone.Collection.extend({
         model: SolutionModel,
-        url: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.solution/",
+        urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.solution",
         sync: function (method, model, options) {
             options || (options = {});
             var errorHandler = {
                 error: function (jqXHR, textStatus, errorThrown) {
-                    // TODO: put your error handling code here
-                    // If you use the JS client from the different domain
-                    // (f.e. locally) then Cross-origin resource sharing 
-                    // headers has to be set on the REST server side.
-                    // Otherwise the JS client has to be copied into the
-                    // some (f.e. the same) Web project on the same domain
                     alert('Unable to fulfil the request');
-                }}
-            
-            var result = Backbone.sync(method, model, _.extend(options, errorHandler));
-            return result;
+                }};
+            switch (method) {
+                case 'read':
+                    /*
+                     * custom methods
+                     */
+                    if (options.func && options.func === 'getAll') {
+                        options.url = _.result(this, 'urlRoot') + '/getall/' + options.id_user;
+                        console.log(_.result(this, 'urlRoot'), options.url);
+                    }
+                    break;
+            }
+
+            return Backbone.sync(method, model, _.extend(options, errorHandler));
         }
     });
-    return SolutionCollection;
+
+    SolutionCollection.getInstance = function () {
+        // summary:
+        //      Gets an instance of the singleton. It is better to use 
+        if (instance === null) {
+            instance = new SolutionCollection();
+        }
+        return instance;
+    };
+
+    return SolutionCollection.getInstance();
 });

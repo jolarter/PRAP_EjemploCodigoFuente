@@ -1,16 +1,57 @@
 <div class="row">
     <!--parte izquierda -->
-    <div class="col-md-6">	
+    <div class="col-md-4">
         <h3>Reto</h3>
         <p id="reto">
             <%= challenge %>
         </p>
-        <h3>Puntaje: <span id='puntaje'><%= points %></span></h3>
-        <button class="btn btn-primary" id="validate"> Validar</button>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Puntaje actual: <span id="points"><%= points %></span></h4>
+                <h4>Estado: <span id="state"></span></h4>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-block" id="validate">Validar</button>
+            </div>
+        </div>
+
     </div>
 
     <!--parte derecha -->
-    <div class="col-md-6">
+    <div class="col-md-8">
         <pre id="editor"></pre>
     </div>
 </div>
+<div class="modal fade" id="error_message">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Mal...</h4>
+            </div>
+            <div class="modal-body">
+                <p>Piensa mejor tu respuesta!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" id="success_message">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Excelente!</h4>
+            </div>
+            <div class="modal-body">
+                <p>¡Eres fantástico!, pasa el siguiente nivel!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

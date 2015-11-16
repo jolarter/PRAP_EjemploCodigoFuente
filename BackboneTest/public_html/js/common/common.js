@@ -67,4 +67,4 @@ requirejs.config({
  * common dependencies to inject in all modules
  * @type Array
  */
-var common_libs = ['jquery', 'backbone', 'underscore', 'backbone_router_filter', 'ace', 'cookie'];
+var common_libs = ['jquery', 'backbone', 'underscore', 'backbone_router_filter', 'bootstrap', 'ace', 'cookie'];

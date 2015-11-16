@@ -1,6 +1,6 @@
 <ul class="nav nav-sidebar">
     <% _.each(steps,function(paso){ %>
-    <li><a href="#challenge/<%=idCategory%>/<%=idLesson%>/<%=paso.idstep%>"><%=paso.name%></a></li>
+    <li><a href="#challenge/<%=idCategory%>/<%=idLesson%>/<%=paso.get('idstep')%>"><%=paso.get('name')%></a></li>
     <% }); %>
     <!--<li><a href="#Final" hreflang="../../imgs/estadistica.png" >Final</a></li>-->
 </ul>

@@ -12,6 +12,7 @@ define(['views/lesson/lessonLoginView'], function (lessonLoginView) {
          */
         this.destroy = function () {
             view.close();
+            view = null;
             console.log('recycled login');
         };
 

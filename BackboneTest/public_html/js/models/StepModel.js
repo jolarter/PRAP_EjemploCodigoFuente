@@ -5,17 +5,17 @@
  */
 
 define([
-  'underscore',
-  'backbone'
-], function(_, Backbone) {
-  
-  var Step = Backbone.Model.extend({
+    'underscore',
+    'backbone'
+], function (_, Backbone) {
+
+    var Step = Backbone.Model.extend({
         urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/",
         idAttribute: 'idstep',
         defaults: {
             code: "",
             expression: "",
-            challengue: "",
+            challenge: "",
             name: "",
             points: ""
         },
@@ -43,19 +43,19 @@ define([
                     // some (f.e. the same) Web project on the same domain
                     alert('Unable to fulfil the request');
                 }}
-            
+
             if (method == 'create') {
                 options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/';
-            }else if(method == 'getStep'){
-                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/'+options.idCategory+'/'+options.idLesson+'/0';                
+            } else if (method == 'getStep') {
+                options.url = 'http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.step/' + options.idCategory + '/' + options.idLesson + '/0';
             }
             var result = Backbone.sync(method, model, _.extend(options, errorHandler));
             return result;
         }
-        
-        
+
+
     });
 
-  return Step;
+    return Step;
 
 });
