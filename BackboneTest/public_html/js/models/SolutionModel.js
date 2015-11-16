@@ -8,7 +8,6 @@ define([
     'underscore',
     'backbone'
 ], function (_, Backbone) {
-
     var SolutionModel = Backbone.Model.extend({
         urlRoot: "http://localhost:8080/Logica/webresources/edu.poli.prap.pp.data.solution",
         is_new: true,
@@ -29,7 +28,6 @@ define([
              based on the 'id' initialization which
              sometimes is required to be initialized.
              So isNew() is rediefined here
-             return undefined!
              */
             return this.is_new && !this.has(this.idAttribute);
         },
@@ -43,13 +41,6 @@ define([
                 case 'create':
                     options.url = _.result(this, 'urlRoot');
                     console.log(_.result(this, 'urlRoot'), options.url);
-                    break;
-                case 'update':
-                    // update by other id
-                    if (!this.has(this.idAttribute)) {
-                        options.url = _.result(this, 'urlRoot') + '/editbyuserandstep/' + this.get('iduser').iduser + '/' + this.get('step').idstep;
-                        console.log(_.result(this, 'urlRoot'), options.url);
-                    }
                     break;
                 case 'read':
                     /*

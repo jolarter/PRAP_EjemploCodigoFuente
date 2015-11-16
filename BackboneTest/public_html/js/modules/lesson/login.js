@@ -21,6 +21,10 @@ define(function () {
             return parseInt($.cookie('logintest'));
         };
 
+        this.getUsername = function () {
+            return 'Jhon';
+        };
+
     };
 
     Login.getInstance = function () {

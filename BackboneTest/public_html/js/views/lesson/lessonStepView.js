@@ -55,7 +55,7 @@ define([
             this.id_step = idStep;
             LessonDownBarView.setIdCategory(idCategory);
             LessonDownBarView.setIdLesson(idLesson);
-            LessonDownBarView.setIdStep(idStep + 1);
+            LessonDownBarView.setCurrentStep(idStep);
             /*
              * get data from cache
              */
@@ -71,6 +71,19 @@ define([
             if (!this.solution_model) {
                 this.solution_model = new SolutionModel({iduser: {iduser: Login.getUserId()}, step: {idstep: idStep}});
                 SolutionCollection.add(this.solution_model);
+            }
+
+            /*
+             * setup the next button
+             */
+            // get next step
+            var id_step_in_collection = _.indexOf(StepCollection.models, this.model);
+            if (id_step_in_collection !== (StepCollection.length - 1)) {
+                // set next step
+                LessonDownBarView.setNextStep(StepCollection.models[_.indexOf(StepCollection.models, this.model) + 1].get('idstep'));
+            } else {
+                // if final step
+                LessonDownBarView.setNextStep(idStep);
             }
 
             // setup some variables
@@ -150,7 +163,6 @@ define([
 
             // update code
             this.code = this.editor.getValue();
-            console.log(this.solution_model.isNew());
 
             // soft check
             if (this.editor.getReadOnly()) {

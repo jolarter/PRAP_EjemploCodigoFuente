@@ -19,11 +19,11 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><span id="topmenu"></span>/<span id="topmenu1"></span>/<span id="topmenu2"></span></a>
+                    <a class="navbar-brand"><span id="topmenu"></span> -> <span id="topmenu1"></span> -> <span id="topmenu2"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Introducción</a></li>
+                        <li><a id="intro_button" href="#">Introducción</a></li>
                         <li><a href="#">Configuración</a></li>
                         <li><a href="#">Perfil</a></li>
                         <li><a href="#">Ayuda</a></li>
@@ -43,7 +43,7 @@
             <nav class="navbar navbar-inverse navbar-fixed-bottom" style="padding:5px">
                 <div class="container-fluid">
                     <div style="text-align: right">
-                        <button class="btn btn-primary btn-lg" role="button" id="next_step" disabled="disabled">Siguiente</button>
+                        <button class="btn btn-primary btn-lg" role="button" id="next_step" disabled="disabled" style="display: none;">Siguiente</button>
                     </div>
                 </div>
             </nav>

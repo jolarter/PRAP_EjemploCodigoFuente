@@ -42,7 +42,7 @@ requirejs(['../../common/common'], function () {
                 'login': 'showLogin',
                 'challenge/:idCategory/:idLesson': 'showIntro',
                 'challenge/:idCategory/:idLesson/:idStep': 'showStep',
-                ':idCategory/:idLesson/end': 'showEnd',
+                'end/:idCategory/:idLesson': 'showEnd',
                 '': 'default',
             },
             /**
@@ -74,7 +74,7 @@ requirejs(['../../common/common'], function () {
                  * custom rules
                  */
                 // load nesesary data
-                if (!data_loaded && (route === 'challenge/:idCategory/:idLesson' || route === 'challenge/:idCategory/:idLesson/:idStep')) {
+                if (!data_loaded) {
 
                     // get all steps from server
                     StepCollection.fetch({
@@ -97,10 +97,10 @@ requirejs(['../../common/common'], function () {
                         }
                     });
                     data_loaded = true;
+                    // first page
+                    this.navigate('');
                     this.navigate('challenge/' + params[0] + '/' + params[1], {trigger: true, replace: true});
-                    if (params.length === 3) {
-                        this.navigate('challenge/' + params[0] + '/' + params[1] + '/' + params[2], {replace: true});
-                    }
+                    return false;
                 }
 
                 // log history off urls
