@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -34,10 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Step.findByIdstep", query = "SELECT s FROM Step s WHERE s.idstep = :idstep"),
     @NamedQuery(name = "Step.findByIdLesson", query = "SELECT s FROM Step s JOIN s.lesson l WHERE l.idlesson = :idlesson ORDER BY s.idstep"),
     @NamedQuery(name = "Step.findByName", query = "SELECT s FROM Step s WHERE s.name = :name"),
-    @NamedQuery(name = "Step.findByChallenge", query = "SELECT s FROM Step s WHERE s.challenge = :challenge"),
-    @NamedQuery(name = "Step.findByPoints", query = "SELECT s FROM Step s WHERE s.points = :points"),
-    @NamedQuery(name = "Step.findByCode", query = "SELECT s FROM Step s WHERE s.code = :code"),
-    @NamedQuery(name = "Step.findByExpression", query = "SELECT s FROM Step s WHERE s.expression = :expression")})
+    @NamedQuery(name = "Step.findByPoints", query = "SELECT s FROM Step s WHERE s.points = :points")})
 public class Step implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,17 +46,24 @@ public class Step implements Serializable {
     @Size(max = 50)
     @Column(name = "name")
     private String name;
-    @Size(max = 100)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "challenge")
     private String challenge;
     @Column(name = "points")
     private Integer points;
-    @Size(max = 25)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "code")
     private String code;
-    @Size(max = 100)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "expression")
     private String expression;
+    @Lob
+    @Size(max = 2147483647)
+    @Column(name = "eval")
+    private String eval;
     @OneToMany(mappedBy = "step")
     private Collection<Solution> solutionCollection;
     @JoinColumn(name = "lesson", referencedColumnName = "idlesson")
@@ -118,6 +123,14 @@ public class Step implements Serializable {
 
     public void setExpression(String expression) {
         this.expression = expression;
+    }
+
+    public String getEval() {
+        return eval;
+    }
+
+    public void setEval(String eval) {
+        this.eval = eval;
     }
 
     @XmlTransient

@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -31,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c"),
     @NamedQuery(name = "Category.findByIdcategory", query = "SELECT c FROM Category c WHERE c.idcategory = :idcategory"),
     @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name"),
-    @NamedQuery(name = "Category.findByDescription", query = "SELECT c FROM Category c WHERE c.description = :description")})
+    @NamedQuery(name = "Category.findByImgurl", query = "SELECT c FROM Category c WHERE c.imgurl = :imgurl")})
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,12 +40,16 @@ public class Category implements Serializable {
     @NotNull
     @Column(name = "idcategory")
     private Integer idcategory;
-    @Size(max = 25)
+    @Size(max = 50)
     @Column(name = "name")
     private String name;
-    @Size(max = 250)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "description")
     private String description;
+    @Size(max = 250)
+    @Column(name = "imgurl")
+    private String imgurl;
     @OneToMany(mappedBy = "category")
     private Collection<Lesson> lessonCollection;
 
@@ -77,6 +82,14 @@ public class Category implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
     }
 
     @XmlTransient

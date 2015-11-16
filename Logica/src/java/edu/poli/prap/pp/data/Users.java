@@ -8,6 +8,7 @@ package edu.poli.prap.pp.data;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
     @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")})
 public class Users implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -170,5 +172,5 @@ public class Users implements Serializable {
     public String toString() {
         return "edu.poli.prap.pp.data.Users[ iduser=" + iduser + " ]";
     }
-    
+
 }

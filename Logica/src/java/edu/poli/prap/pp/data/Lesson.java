@@ -12,6 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -32,9 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Lesson.findAll", query = "SELECT l FROM Lesson l"),
     @NamedQuery(name = "Lesson.findByIdlesson", query = "SELECT l FROM Lesson l WHERE l.idlesson = :idlesson"),
-    @NamedQuery(name = "Lesson.findByName", query = "SELECT l FROM Lesson l WHERE l.name = :name"),
-    @NamedQuery(name = "Lesson.findByDescription", query = "SELECT l FROM Lesson l WHERE l.description = :description"),
-    @NamedQuery(name = "Lesson.findByIntroduction", query = "SELECT l FROM Lesson l WHERE l.introduction = :introduction")})
+    @NamedQuery(name = "Lesson.findByName", query = "SELECT l FROM Lesson l WHERE l.name = :name")})
 public class Lesson implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,10 +44,12 @@ public class Lesson implements Serializable {
     @Size(max = 100)
     @Column(name = "name")
     private String name;
-    @Size(max = 250)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "description")
     private String description;
-    @Size(max = 250)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "introduction")
     private String introduction;
     @JoinColumn(name = "category", referencedColumnName = "idcategory")

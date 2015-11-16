@@ -39,7 +39,7 @@ public class Level implements Serializable {
     @NotNull
     @Column(name = "idlevel")
     private Integer idlevel;
-    @Size(max = 25)
+    @Size(max = 50)
     @Column(name = "name")
     private String name;
     @Column(name = "points")

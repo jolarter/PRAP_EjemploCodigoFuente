@@ -8,10 +8,14 @@ package edu.poli.prap.pp.data;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,6 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -31,17 +36,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Solution.findAll", query = "SELECT s FROM Solution s"),
     @NamedQuery(name = "Solution.findByIdsolution", query = "SELECT s FROM Solution s WHERE s.idsolution = :idsolution"),
+    @NamedQuery(name = "Solution.findByIdUser", query = "SELECT s FROM Solution s JOIN s.iduser u WHERE u.iduser = :iduser"),
+    @NamedQuery(name = "Solution.findByStep", query = "SELECT s FROM Solution s WHERE s.step = :step AND s.iduser = :iduser"),
     @NamedQuery(name = "Solution.findByStartDate", query = "SELECT s FROM Solution s WHERE s.startDate = :startDate"),
     @NamedQuery(name = "Solution.findByEndDate", query = "SELECT s FROM Solution s WHERE s.endDate = :endDate"),
     @NamedQuery(name = "Solution.findByTrials", query = "SELECT s FROM Solution s WHERE s.trials = :trials"),
     @NamedQuery(name = "Solution.findByPoints", query = "SELECT s FROM Solution s WHERE s.points = :points"),
-    @NamedQuery(name = "Solution.findByComplete", query = "SELECT s FROM Solution s WHERE s.complete = :complete"),
-    @NamedQuery(name = "Solution.findByCode", query = "SELECT s FROM Solution s WHERE s.code = :code")})
+    @NamedQuery(name = "Solution.findByComplete", query = "SELECT s FROM Solution s WHERE s.complete = :complete")})
 public class Solution implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idsolution")
     private Integer idsolution;
     @Column(name = "start_date")
@@ -56,8 +64,11 @@ public class Solution implements Serializable {
     private Integer points;
     @Column(name = "complete")
     private Boolean complete;
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "code")
-    private Integer code;
+    private String code;
+
     @JoinColumn(name = "step", referencedColumnName = "idstep")
     @ManyToOne
     private Step step;
@@ -120,11 +131,11 @@ public class Solution implements Serializable {
         this.complete = complete;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -168,5 +179,5 @@ public class Solution implements Serializable {
     public String toString() {
         return "edu.poli.prap.pp.data.Solution[ idsolution=" + idsolution + " ]";
     }
-    
+
 }

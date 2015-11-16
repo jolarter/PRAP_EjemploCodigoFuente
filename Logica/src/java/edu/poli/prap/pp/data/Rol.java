@@ -38,7 +38,7 @@ public class Rol implements Serializable {
     @NotNull
     @Column(name = "idrol")
     private Integer idrol;
-    @Size(max = 25)
+    @Size(max = 50)
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "rol")

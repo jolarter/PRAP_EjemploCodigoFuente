@@ -26,6 +26,7 @@ import javax.ws.rs.Produces;
 @Stateless
 @Path("edu.poli.prap.pp.data.step")
 public class StepFacadeREST extends AbstractFacade<Step> {
+
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
 
@@ -75,12 +76,9 @@ public class StepFacadeREST extends AbstractFacade<Step> {
     }
 
     @GET
-    @Path("{idCategory}/{idLesson}/{garbage}")
+    @Path("getall/{idCategory}/{idLesson}")
     @Produces({"application/xml", "application/json"})
-    public List<Step> findRange(@PathParam("idCategory") Integer idCategory, 
-                                @PathParam("idLesson") Integer idLesson, 
-                                @PathParam("garbage") Integer g) {
-        //return super.findRange(new int[]{from, to});
+    public List<Step> getAll(@PathParam("idCategory") Integer idCategory, @PathParam("idLesson") Integer idLesson) {
         return em.createNamedQuery("Step.findByIdLesson").setParameter("idlesson", idLesson).getResultList();
     }
 
@@ -95,5 +93,5 @@ public class StepFacadeREST extends AbstractFacade<Step> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
 }
