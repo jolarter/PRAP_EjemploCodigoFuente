@@ -37,10 +37,13 @@ public class SolutionFacadeREST extends AbstractFacade<Solution> {
     }
 
     @POST
-    @Override
+    //@Override
     @Consumes({"application/xml", "application/json"})
-    public void create(Solution entity) {
+    public Solution create2(Solution entity) {
         super.create(entity);
+        getEntityManager().flush();
+        System.out.println(entity);
+        return entity;
     }
 
     @PUT

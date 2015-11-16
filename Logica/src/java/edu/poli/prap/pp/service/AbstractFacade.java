@@ -5,14 +5,17 @@
  */
 package edu.poli.prap.pp.service;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 import javax.persistence.EntityManager;
+import java.util.List;
+/*
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.genericBooleanType;
+import java.util.Iterator;
+import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+*/
 
 /**
  *
@@ -29,7 +32,6 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
-        System.out.println("hola");
         getEntityManager().persist(entity);
     }
     /*
