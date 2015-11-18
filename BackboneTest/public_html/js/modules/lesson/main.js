@@ -74,7 +74,7 @@ requirejs(['../../common/common'], function () {
                  * custom rules
                  */
                 // load nesesary data
-                if (!data_loaded) {
+                if (!data_loaded && params.length >= 2) {
 
                     // get all steps from server
                     StepCollection.fetch({
