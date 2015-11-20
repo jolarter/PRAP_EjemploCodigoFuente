@@ -51,6 +51,8 @@ requirejs.config({
         bootstrap: 'bootstrap/bootstrap.min',
         ace: 'ace/src-min-noconflict/ace',
         cookie: 'cookie/jquery.cookie',
+        sha1: 'cryptojs/sha1',
+        utils: 'utils/utils',
         /*
          * Custom
          */
@@ -67,4 +69,4 @@ requirejs.config({
  * common dependencies to inject in all modules
  * @type Array
  */
-var common_libs = ['jquery', 'backbone', 'underscore', 'backbone_router_filter', 'bootstrap', 'ace', 'cookie'];
+var common_libs = ['jquery', 'backbone', 'underscore', 'backbone_router_filter', 'bootstrap', 'ace', 'cookie', 'sha1', 'utils'];

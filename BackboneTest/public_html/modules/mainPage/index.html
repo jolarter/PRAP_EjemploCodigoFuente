@@ -1,343 +1,338 @@
+<!--
+    ******
+    Rebuild all html, only preserve the explicit html (highlight in comments)
+    Jhon Eslava
+    ******
+-->
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        
-	<title>Programa en el poli</title>
-        
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-            
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>Programa en el poli</title>
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
         <link rel="icon" href="../../imgs/mainPague/favicon.ico">
-        
-        <script type="text/javascript">var switchTo5x=true;</script>
-        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: "18c83b6d-cb4e-42a3-9ffd-e02ff67174d0", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>        
-        
-        <link href="../../css/mainPage/bootstrap.min.css" rel="stylesheet">
-        <script src="../../js/libs/mainPage/ie-emulation-modes-warning.js"></script>
-        
-        <link href="../../css/mainPage/carousel.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../../css/mainPage/style10.css" />
-        <link rel="stylesheet" type="text/css" href="../../css/mainPage/normalize.css" />
-        
-        <script src="../../js/libs/mainPage/snap.svg-min.js"></script>
-        <script src="../../js/libs/mainPage/modernizr.custom.js"></script>
-        
-        <script src="../../js/libs/mainPage/classie.js"></script>
-        
+
+        <!--
+            ******
+            bootstrap CSS & RequireJS
+            preserve this in next version
+            ******
+        -->
+        <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
         <script data-main="../../js/modules/main/main" src="../../js/libs/require/require.js"></script>
-        
-        
-    
+    </head>
+    <body>
 
-	
-</head>
-<body>
+        <div class="navbar-wrapper" id="container">
+            <div class="container">
 
-<div class="navbar-wrapper" id="container">
-      <div class="container">
+                <nav class="navbar navbar-inverse navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="http://www.estudiaenelpoli.edu.co/"><img style="position: relative; top: " src="../../imgs/mainPague/logo_header.png"></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
 
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-                <a class="navbar-brand" href="http://www.estudiaenelpoli.edu.co/"><img style="position: relative; top: " src="../../imgs/mainPague/logo_header.png"></a>
+                                <li><a id ="comofunciona" href="#ancla1">Como funciona</a></li>
+                                <li><a id ="acerdade" href="#ancla2">Acerca de</a></li>
+                                <!--
+                                    ******
+                                    login ans register modals events 
+                                    preserve this ids in next version
+                                    ******
+                                -->
+                                <li><a href="#login">Iniciar sesion</a></li>
+                                <li><a href="#register">Crear cuenta</a></li>
+
+                                <li><a class='st_facebook_large' displayText='Facebook' style="padding: 10px 5px 10px 5px " ></a></li>
+                                <li><a class='st_twitter_large' displayText='Tweet' style="padding: 10px 5px 10px 5px " ></a></li>
+                                <li><a class='st_googleplus_large' displayText='Google +' style="padding: 10px 5px 10px 5px " ></a></li>
+                                <li><a class='st_email_large' displayText='Email' style="padding: 10px 5px 10px 5px " ></a></li>
+
+                                <!--<ul id ="usuario" class="nav navbar-nav" ></ul>-->
+                                <p id ="usuario" class="nav navbar-nav" ></p>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                
-                <li><a id ="comofunciona" href="#ancla1">Como funciona</a></li>
-                <li><a id ="acerdade" href="#ancla2">Acerca de</a></li>
-                <li><a id="inici" href="Login/index.html">Iniciar sesion </a></li>
-                <li><a id="crear" href="Sign in/index.html">Crear cuenta</a></li>
-                
-                <li><a class='st_facebook_large' displayText='Facebook' style="padding: 10px 5px 10px 5px " ></a></li>
-                <li><a class='st_twitter_large' displayText='Tweet' style="padding: 10px 5px 10px 5px " ></a></li>
-                <li><a class='st_googleplus_large' displayText='Google +' style="padding: 10px 5px 10px 5px " ></a></li>
-                <li><a class='st_email_large' displayText='Email' style="padding: 10px 5px 10px 5px " ></a></li>
-                
-                <!--<ul id ="usuario" class="nav navbar-nav" ></ul>-->
-                <p id ="usuario" class="nav navbar-nav" ></p>
-                
-              </ul>
+        </div>
+
+
+        <!-- Carousel
+        ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="../../imgs/mainPague/a2.jpg" alt="First slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1></h1>
+                            <p></p>
+                            <p><a class="btn btn-lg btn-primary" href="http://www.unmillondeposibilidades.com/" role="button">Vermas</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="../../imgs/mainPague/a1.png" alt="Second slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1></h1>
+                            <p></p>
+                            <!--<p><a class="btn btn-lg btn-primary" href="http://www.poligran.edu.co/eContent/NewsDetail.asp?ID=15596&IDCompany=2" role="button">Ver mas</a></p>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="../../imgs/mainPague/a3.jpg" alt="Third slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1></h1>
+                            <p></p>
+                            <p><a class="btn btn-lg btn-primary" href="http://www.estudiaenelpoli.edu.co/" role="button">Ver mas</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </nav>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+                <span class="sr-only">Next</span>
+            </a>
+        </div><!-- /.carousel -->
 
-      </div>
-    </div>
+
+        <!-- Marketing messaging and featurettes
+        ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing">
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row" id="Category">
+                <div class="col-lg-4">
+                    <img class="img-circle" src="../../imgs/mainPague/introduccion.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                    <h2>Introducción</h2>
+                    <p>Aprende los conceptos básicos de programación en Java.</p>
+                    <button id="1" >Lecciones &raquo;</button>
 
 
-    <!-- Carousel
-    ================================================== -->
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="../../imgs/mainPague/a2.jpg" alt="First slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1></h1>
-              <p></p>
-              <p><a class="btn btn-lg btn-primary" href="http://www.unmillondeposibilidades.com/" role="button">Vermas</a></p>
+
+
+                    <ul id="ocultar1" style="display:none" class="lec">
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay" >Leccion 1</a>Hola Mundo!</p>
+                            </section></li>
+
+
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay2" >Leccion 1.2:</a>Instrucciones y lineas de codigo</p>
+                            </section></li>
+
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay3" >Leccion 1.3:</a>Valores enteros y flotantes</p>
+                            </section></li>
+
+
+                    </ul> 
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="img-circle" src="../../imgs/mainPague/variables.jpg" alt="Generic placeholder image" style="width: 150px; height: 150px;">
+                    <h2>Variables</h2>
+                    <p>Aprende a identificar y manejar los diferentes tipos de datos básicos en Java.</p>
+                    <button id="2">Lecciones &raquo;</button>
+
+                    <ul id="ocultar2" style="display:none" class="lec">
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay4" >Leccion 1:</a></p>
+                            </section></li>
+
+
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay5" >Leccion 2:</a></p>
+                            </section></li>
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay6" >Leccion 3:</a></p>
+                            </section></li>
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay7" >Leccion 4:</a></p>
+                            </section></li>
+
+
+                    </ul>
+
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="img-circle" src="../../imgs/mainPague/ciclos.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+                    <h2>Condicionales</h2>
+                    <p>Entiende como construir estructuras condicionales y aplicarlas a tus programas.</p>
+                    <button id="3">Lecciones &raquo;</button>
+
+                    <ul id="ocultar3" style="display:none" >
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay8" >Leccion 1:</a></p>
+                            </section></li>
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay9" >Leccion 2:</a></p>
+                            </section></li>
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay10" >Leccion 3:</a></p>
+                            </section></li>
+
+                        <li><section>
+
+                                <p><a id="trigger-overlay11" >Leccion 4:</a></p>
+                            </section></li>
+
+
+                    </ul>
+
+
+                </div><!-- /.col-lg-4 --> 
+            </div><!-- /.row -->
+
+
+
+            <!-- START THE FEATURETTES -->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7" id="ancla1">
+                    <h2 class="featurette-heading" >Como <span class="text-muted">Funciona</span></h2>
+                    <p class="lead">Es una plataforma que permite el aprendizaje de programación básica, tenemos un sistema simple en el cual progresaras pasando cada uno de los cursos impuestos de esta manera aprenderás todos los conocimientos necesarios de manera ordenada y simple.</p>
+                </div>
+                <div class="col-md-5">
+                    <img  src="../../imgs/mainPague/java1.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">
+                    <!--<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="item">
-            <img src="../../imgs/mainPague/a1.png" alt="Second slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1></h1>
-              <p></p>
-              <!--<p><a class="btn btn-lg btn-primary" href="http://www.poligran.edu.co/eContent/NewsDetail.asp?ID=15596&IDCompany=2" role="button">Ver mas</a></p>-->
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-5">
+                    <img  src="../../imgs/mainPague/poli.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">
+                    <!--<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
+                </div>
+                <div class="col-md-7">
+                    <h2 class="featurette-heading" id="ancla2" >Acerca <span class="text-muted">de</span></h2>
+                    <p class="lead">La Institución Universitaria Politécnico Grancolombiano tiene como fin contribuir a la inclusión social y al desarrollo de la nación, principalmente a través de la oferta de programas en toda la cadena de formación que se distingan por su calidad y pertinencia.</p>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="item">
-            <img src="../../imgs/mainPague/a3.jpg" alt="Third slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1></h1>
-              <p></p>
-              <p><a class="btn btn-lg btn-primary" href="http://www.estudiaenelpoli.edu.co/" role="button">Ver mas</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
-        <span class="sr-only">Next</span>
-      </a>
-    </div><!-- /.carousel -->
 
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row" id="Category">
-        <div class="col-lg-4">
-          <img class="img-circle" src="../../imgs/mainPague/introduccion.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Introducción</h2>
-          <p>Aprende los conceptos básicos de programación en Java.</p>
-          <button id="1" >Lecciones &raquo;</button>
-    
-        
-        
-        
-    <ul id="ocultar1" style="display:none" class="lec">
-    
-    	<li><section>
-				
-				<p><a id="trigger-overlay" >Leccion 1</a>Hola Mundo!</p>
-			</section></li>
-        
-    	
-    
-    	<li><section>
-				
-				<p><a id="trigger-overlay2" >Leccion 1.2:</a>Instrucciones y lineas de codigo</p>
-			</section></li>
-    
-    	
-        <li><section>
-				
-				<p><a id="trigger-overlay3" >Leccion 1.3:</a>Valores enteros y flotantes</p>
-			</section></li>
-        
-      
-    </ul> 
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <img class="img-circle" src="../../imgs/mainPague/variables.jpg" alt="Generic placeholder image" style="width: 150px; height: 150px;">
-          <h2>Variables</h2>
-          <p>Aprende a identificar y manejar los diferentes tipos de datos básicos en Java.</p>
-              <button id="2">Lecciones &raquo;</button>
-    
-    <ul id="ocultar2" style="display:none" class="lec">
-    
-    		<li><section>
-				
-				<p><a id="trigger-overlay4" >Leccion 1:</a></p>
-			</section></li>
-        
-       
-    
-    	<li><section>
-				
-				<p><a id="trigger-overlay5" >Leccion 2:</a></p>
-			</section></li>
-     
-    	<li><section>
-				
-				<p><a id="trigger-overlay6" >Leccion 3:</a></p>
-			</section></li>
-    
-    	<li><section>
-				
-				<p><a id="trigger-overlay7" >Leccion 4:</a></p>
-			</section></li>
-    
-    	
-    </ul>
-        
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="../../imgs/mainPague/ciclos.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Condicionales</h2>
-          <p>Entiende como construir estructuras condicionales y aplicarlas a tus programas.</p>
-        <button id="3">Lecciones &raquo;</button>
-    
-    <ul id="ocultar3" style="display:none" >
-    
-    <li><section>
-				
-				<p><a id="trigger-overlay8" >Leccion 1:</a></p>
-			</section></li>
-        
-        <li><section>
-				
-				<p><a id="trigger-overlay9" >Leccion 2:</a></p>
-			</section></li>
-     
-    	<li><section>
-				
-				<p><a id="trigger-overlay10" >Leccion 3:</a></p>
-			</section></li>
-    
-    	<li><section>
-				
-				<p><a id="trigger-overlay11" >Leccion 4:</a></p>
-			</section></li>
-    
-    	
-    </ul>
-    
-     
-        </div><!-- /.col-lg-4 --> 
-      </div><!-- /.row -->
+            <hr class="featurette-divider">
 
 
 
-      <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-          <div class="col-md-7" id="ancla1">
-          <h2 class="featurette-heading" >Como <span class="text-muted">Funciona</span></h2>
-          <p class="lead">Es una plataforma que permite el aprendizaje de programación básica, tenemos un sistema simple en el cual progresaras pasando cada uno de los cursos impuestos de esta manera aprenderás todos los conocimientos necesarios de manera ordenada y simple.</p>
-        </div>
-        <div class="col-md-5">
-            <img  src="../../imgs/mainPague/java1.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">
-          <!--<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-5">
-            <img  src="../../imgs/mainPague/poli.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">
-          <!--<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
-        </div>
-        <div class="col-md-7">
-          <h2 class="featurette-heading" id="ancla2" >Acerca <span class="text-muted">de</span></h2>
-          <p class="lead">La Institución Universitaria Politécnico Grancolombiano tiene como fin contribuir a la inclusión social y al desarrollo de la nación, principalmente a través de la oferta de programas en toda la cadena de formación que se distingan por su calidad y pertinencia.</p>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      
-
-      <!-- /END THE FEATURETTES -->
+            <!-- /END THE FEATURETTES -->
 
 
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Regresar al inicio</a></p>
-       <!-- <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
-      </footer>
+            <!-- FOOTER -->
+            <footer>
+                <p class="pull-right"><a href="#">Regresar al inicio</a></p>
+                <!-- <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
+            </footer>
 
-    </div><!-- /.container -->
-    
-    	<div class="overlay overlay-boxes">
-			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="101%" viewBox="0 0 1440 806" preserveAspectRatio="none">
-				<path d="m0.005959,200.364029l207.551124,0l0,204.342453l-207.551124,0l0,-204.342453z"/>
-				<path d="m0.005959,400.45401l207.551124,0l0,204.342499l-207.551124,0l0,-204.342499z"/>
-				<path d="m0.005959,600.544067l207.551124,0l0,204.342468l-207.551124,0l0,-204.342468z"/>
-				<path d="m205.752151,-0.36l207.551163,0l0,204.342437l-207.551163,0l0,-204.342437z"/>
-				<path d="m204.744629,200.364029l207.551147,0l0,204.342453l-207.551147,0l0,-204.342453z"/>
-				<path d="m204.744629,400.45401l207.551147,0l0,204.342499l-207.551147,0l0,-204.342499z"/>
-				<path d="m204.744629,600.544067l207.551147,0l0,204.342468l-207.551147,0l0,-204.342468z"/>
-				<path d="m410.416046,-0.36l207.551117,0l0,204.342437l-207.551117,0l0,-204.342437z"/>
-				<path d="m410.416046,200.364029l207.551117,0l0,204.342453l-207.551117,0l0,-204.342453z"/>
-				<path d="m410.416046,400.45401l207.551117,0l0,204.342499l-207.551117,0l0,-204.342499z"/>
-				<path d="m410.416046,600.544067l207.551117,0l0,204.342468l-207.551117,0l0,-204.342468z"/>
-				<path d="m616.087402,-0.36l207.551086,0l0,204.342437l-207.551086,0l0,-204.342437z"/>
-				<path d="m616.087402,200.364029l207.551086,0l0,204.342453l-207.551086,0l0,-204.342453z"/>
-				<path d="m616.087402,400.45401l207.551086,0l0,204.342499l-207.551086,0l0,-204.342499z"/>
-				<path d="m616.087402,600.544067l207.551086,0l0,204.342468l-207.551086,0l0,-204.342468z"/>
-				<path d="m821.748718,-0.36l207.550964,0l0,204.342437l-207.550964,0l0,-204.342437z"/>
-				<path d="m821.748718,200.364029l207.550964,0l0,204.342453l-207.550964,0l0,-204.342453z"/>
-				<path d="m821.748718,400.45401l207.550964,0l0,204.342499l-207.550964,0l0,-204.342499z"/>
-				<path d="m821.748718,600.544067l207.550964,0l0,204.342468l-207.550964,0l0,-204.342468z"/>
-				<path d="m1027.203979,-0.36l207.550903,0l0,204.342437l-207.550903,0l0,-204.342437z"/>
-				<path d="m1027.203979,200.364029l207.550903,0l0,204.342453l-207.550903,0l0,-204.342453z"/>
-				<path d="m1027.203979,400.45401l207.550903,0l0,204.342499l-207.550903,0l0,-204.342499z"/>
-				<path d="m1027.203979,600.544067l207.550903,0l0,204.342468l-207.550903,0l0,-204.342468z"/>
-				<path d="m1232.659302,-0.36l207.551147,0l0,204.342437l-207.551147,0l0,-204.342437z"/>
-				<path d="m1232.659302,200.364029l207.551147,0l0,204.342453l-207.551147,0l0,-204.342453z"/>
-				<path d="m1232.659302,400.45401l207.551147,0l0,204.342499l-207.551147,0l0,-204.342499z"/>
-				<path d="m1232.659302,600.544067l207.551147,0l0,204.342468l-207.551147,0l0,-204.342468z"/>
-				<path d="m-0.791443,-0.360001l207.551163,0l0,204.342438l-207.551163,0l0,-204.342438z"/>
-			</svg>
-			<button type="button" class="overlay-close">Close</button>
-			<nav>
-                            
-				<h2>Una clase no es solo un grupo de personas que reciben una leccion, 
-                                    en programacion es muy importante</h2>
-             <br>
-             <h1>El estado de la leccion es: </h1> <img src="../../imgs/mainPague/aprobadp.jpg" alt=""/>
-            <br>
-             <a href="#" target="_self"> <input type="button" name="boton" value="Ir a la lección" /> </a>
-                            
-			</nav>
-		</div> 
-    
-    
-    <script src="../../js/libs/mainPage/jquery.min.js"></script>
-    <script src="../../js/libs/mainPage/booststrap.min.js"></script>
-    <!--<script src="../../js/libs/mainPage/docs.min.js"></script>-->
-    
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../js/libs/mainPage/ie10-viewport-bug-workaround.js"></script>
-    <Script src="../../js/libs/mainPage/lecciones.js"></script>
-    <script src="../../js/libs/mainPage/demo10.js"></script>
-    
-</body>
+        </div><!-- /.container -->
+
+        <div class="overlay overlay-boxes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="101%" viewBox="0 0 1440 806" preserveAspectRatio="none">
+            <path d="m0.005959,200.364029l207.551124,0l0,204.342453l-207.551124,0l0,-204.342453z"/>
+            <path d="m0.005959,400.45401l207.551124,0l0,204.342499l-207.551124,0l0,-204.342499z"/>
+            <path d="m0.005959,600.544067l207.551124,0l0,204.342468l-207.551124,0l0,-204.342468z"/>
+            <path d="m205.752151,-0.36l207.551163,0l0,204.342437l-207.551163,0l0,-204.342437z"/>
+            <path d="m204.744629,200.364029l207.551147,0l0,204.342453l-207.551147,0l0,-204.342453z"/>
+            <path d="m204.744629,400.45401l207.551147,0l0,204.342499l-207.551147,0l0,-204.342499z"/>
+            <path d="m204.744629,600.544067l207.551147,0l0,204.342468l-207.551147,0l0,-204.342468z"/>
+            <path d="m410.416046,-0.36l207.551117,0l0,204.342437l-207.551117,0l0,-204.342437z"/>
+            <path d="m410.416046,200.364029l207.551117,0l0,204.342453l-207.551117,0l0,-204.342453z"/>
+            <path d="m410.416046,400.45401l207.551117,0l0,204.342499l-207.551117,0l0,-204.342499z"/>
+            <path d="m410.416046,600.544067l207.551117,0l0,204.342468l-207.551117,0l0,-204.342468z"/>
+            <path d="m616.087402,-0.36l207.551086,0l0,204.342437l-207.551086,0l0,-204.342437z"/>
+            <path d="m616.087402,200.364029l207.551086,0l0,204.342453l-207.551086,0l0,-204.342453z"/>
+            <path d="m616.087402,400.45401l207.551086,0l0,204.342499l-207.551086,0l0,-204.342499z"/>
+            <path d="m616.087402,600.544067l207.551086,0l0,204.342468l-207.551086,0l0,-204.342468z"/>
+            <path d="m821.748718,-0.36l207.550964,0l0,204.342437l-207.550964,0l0,-204.342437z"/>
+            <path d="m821.748718,200.364029l207.550964,0l0,204.342453l-207.550964,0l0,-204.342453z"/>
+            <path d="m821.748718,400.45401l207.550964,0l0,204.342499l-207.550964,0l0,-204.342499z"/>
+            <path d="m821.748718,600.544067l207.550964,0l0,204.342468l-207.550964,0l0,-204.342468z"/>
+            <path d="m1027.203979,-0.36l207.550903,0l0,204.342437l-207.550903,0l0,-204.342437z"/>
+            <path d="m1027.203979,200.364029l207.550903,0l0,204.342453l-207.550903,0l0,-204.342453z"/>
+            <path d="m1027.203979,400.45401l207.550903,0l0,204.342499l-207.550903,0l0,-204.342499z"/>
+            <path d="m1027.203979,600.544067l207.550903,0l0,204.342468l-207.550903,0l0,-204.342468z"/>
+            <path d="m1232.659302,-0.36l207.551147,0l0,204.342437l-207.551147,0l0,-204.342437z"/>
+            <path d="m1232.659302,200.364029l207.551147,0l0,204.342453l-207.551147,0l0,-204.342453z"/>
+            <path d="m1232.659302,400.45401l207.551147,0l0,204.342499l-207.551147,0l0,-204.342499z"/>
+            <path d="m1232.659302,600.544067l207.551147,0l0,204.342468l-207.551147,0l0,-204.342468z"/>
+            <path d="m-0.791443,-0.360001l207.551163,0l0,204.342438l-207.551163,0l0,-204.342438z"/>
+            </svg>
+            <button type="button" class="overlay-close">Close</button>
+            <nav>
+
+                <h2>Una clase no es solo un grupo de personas que reciben una leccion, 
+                    en programacion es muy importante</h2>
+                <br>
+                <h1>El estado de la leccion es: </h1> <img src="../../imgs/mainPague/aprobadp.jpg" alt=""/>
+                <br>
+                <a href="#" target="_self"> <input type="button" name="boton" value="Ir a la lección" /> </a>
+
+            </nav>
+        </div> 
+        <!--
+            ******
+            login ans register modals windows
+            preserve this id in next version
+            ******
+        -->
+        <div id="modal_container"></div>
+
+    </body>
 </html>

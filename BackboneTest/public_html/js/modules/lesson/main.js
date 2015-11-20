@@ -17,7 +17,7 @@ requirejs(['../../common/common'], function () {
     /**
      * the main function
      */
-    requirejs(['app/lesson/login',
+    requirejs(['app/login/login',
         'collections/StepCollection',
         'collections/SolutionCollection'].concat(common_libs), function (Login, StepCollection, SolutionCollection) {
         var data_loaded = false;
@@ -39,10 +39,10 @@ requirejs(['../../common/common'], function () {
              */
             routes: {
                 // Define some URL routes
-                'login': 'showLogin',
                 'challenge/:idCategory/:idLesson': 'showIntro',
                 'challenge/:idCategory/:idLesson/:idStep': 'showStep',
                 'end/:idCategory/:idLesson': 'showEnd',
+                'exit': 'showExit',
                 '': 'default',
             },
             /**
@@ -65,9 +65,11 @@ requirejs(['../../common/common'], function () {
                 }
 
                 // check if logged
-                if (!Login.isLogged() && route !== 'login') {
-                    this.navigate('#login', {trigger: true});
-                    return false;
+                if (!Login.isLogged()) {
+                    if (route !== 'exit') {
+                        this.navigate('#exit', {trigger: true, replace: true});
+                        return false;
+                    }
                 }
 
                 /*
@@ -91,7 +93,7 @@ requirejs(['../../common/common'], function () {
                     SolutionCollection.fetch({
                         func: 'getAll',
                         async: false,
-                        id_user: Login.getUserId(),
+                        token: Login.getToken(),
                         success: function (collection, response) {
                             //...
                         }
@@ -117,12 +119,6 @@ requirejs(['../../common/common'], function () {
                     self.trash.push(callback());
                 });
             },
-            showLogin: function () {
-                var self = this;
-                requirejs(['app/lesson/route.showLogin'], function (callback) {
-                    self.trash.push(callback());
-                });
-            },
             showIntro: function (idCategory, idLesson) {
                 var self = this;
                 requirejs(['app/lesson/route.showIntro'], function (callback) {
@@ -139,6 +135,12 @@ requirejs(['../../common/common'], function () {
                 var self = this;
                 requirejs(['app/lesson/route.showEnd'], function (callback) {
                     self.trash.push(callback(idCategory, idLesson));
+                });
+            },
+            showExit: function () {
+                var self = this;
+                requirejs(['app/lesson/route.showExit'], function (callback) {
+                    self.trash.push(callback());
                 });
             }
         });

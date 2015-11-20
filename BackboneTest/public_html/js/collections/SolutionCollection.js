@@ -25,7 +25,7 @@ define([
                      * custom methods
                      */
                     if (options.func && options.func === 'getAll') {
-                        options.url = _.result(this, 'urlRoot') + '/getall/' + options.id_user;
+                        options.url = _.result(this, 'urlRoot') + '/getall/' + options.token;
                         console.log(_.result(this, 'urlRoot'), options.url);
                     }
                     break;

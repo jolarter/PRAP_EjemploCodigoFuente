@@ -5,7 +5,7 @@
 /* global Backbone, _, ace */
 
 define([
-    'app/lesson/login',
+    'app/login/login',
     'models/SolutionModel',
     'collections/StepCollection',
     'collections/SolutionCollection',
@@ -180,8 +180,8 @@ define([
                     args.push(match[i]);
                 }
                 if (real_func.apply(this, args) === true) {
-                    this.solution_model.set({end_date: new Date().toJSON().slice(0, 10), points: this.points, complete: true, code: this.code});
-                    this.solution_model.save();
+                    this.solution_model.set({points: this.points, complete: true, code: this.code});
+                    this.solution_model.save(null, {token: Login.getToken()});
                     this.startup(true);
                     $('#success_message').modal();
                     return;
@@ -191,7 +191,7 @@ define([
             // penitence
             this.points -= 5;
             this.solution_model.set({points: this.points, complete: false, code: this.code});
-            this.solution_model.save();
+            this.solution_model.save(null, {token: Login.getToken()});
 
             this.$('#points').html(this.points);
             $('#error_message').modal();

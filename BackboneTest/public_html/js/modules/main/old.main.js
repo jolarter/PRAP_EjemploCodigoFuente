@@ -6,17 +6,18 @@
 require.config({
   baseUrl: "../../js",
   paths: {
-    jquery: 'libs/jquery/jquery-min',
+    jquery: 'libs/jquery/jquery-2.1.3.min',
     underscore: 'libs/underscore/underscore-min',
     backbone: 'libs/backbone/backbone-min',
-    templates: '../templates'
+    templates: '../templates',
+    lecciones: 'libs/mainPage/lecciones'
   }
 
 });
 
 require([
   // Load our app module and pass it to our definition function
-  'modules/auth/app'
+  'modules/main/app'
 
 ], function(App){
   // The "app" dependency is passed in as "App"

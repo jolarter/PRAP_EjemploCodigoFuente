@@ -5,7 +5,7 @@
 /* global common_libs, Backbone, _, router */
 
 define([
-    'app/lesson/login',
+    'app/login/login',
     'text!templates/lesson/lessonLeftBarTemplate.html',
     'text!templates/lesson/lessonIntroTemplate.html',
     'models/CategoryModel',

@@ -2,9 +2,11 @@
  * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
  */
 
-define(['views/lesson/lessonLoginView'], function (lessonLoginView) {
+/* global common_libs, Backbone */
+
+define(['views/main/mainView'], function (MainView) {
     return function () {
-        var view = new lessonLoginView();
+        var view = new MainView();
         view.render();
 
         /*

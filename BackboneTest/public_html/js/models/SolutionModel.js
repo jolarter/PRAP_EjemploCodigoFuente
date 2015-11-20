@@ -14,8 +14,6 @@ define([
         idAttribute: 'idsolution',
         defaults: {
             idsolution: null,
-            start_date: null,
-            end_date: null,
             trials: 0,
             points: 0,
             complete: false,
@@ -39,17 +37,12 @@ define([
                 }};
             switch (method) {
                 case 'create':
-                    options.url = _.result(this, 'urlRoot');
+                    options.url = _.result(this, 'urlRoot') + '/' + options.token;
                     console.log(_.result(this, 'urlRoot'), options.url);
                     break;
-                case 'read':
-                    /*
-                     * custom methods
-                     */
-                    if (options.func && options.func === 'searchFromStepAndUser') {
-                        options.url = _.result(this, 'urlRoot') + '/solution/' + options.id_step + '/' + options.id_user;
-                        console.log(_.result(this, 'urlRoot'), options.url);
-                    }
+
+                case 'update':
+                    options.url = _.result(this, 'urlRoot') + '/' + options.token + '/' + this.get(this.idAttribute);
                     break;
             }
 
