@@ -8,6 +8,7 @@ package edu.poli.prap.pp.service;
 import edu.poli.prap.pp.data.Solution;
 import edu.poli.prap.pp.data.Step;
 import edu.poli.prap.pp.data.Users;
+import edu.poli.prap.pp.logic.SessionManager;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -32,31 +33,36 @@ public class SolutionFacadeREST extends AbstractFacade<Solution> {
     @PersistenceContext(unitName = "LogicaPU")
     private EntityManager em;
 
+    private SessionManager sm;
+
     public SolutionFacadeREST() {
         super(Solution.class);
+        this.sm = SessionManager.getInstance();
     }
 
     @POST
-    //@Override
+    @Path("{token}")
     @Consumes({"application/xml", "application/json"})
-    public Solution create2(Solution entity) {
+    public Solution create2(@PathParam("token") String token, Solution entity) {
+
+        if (!sm.checkToken(token) || sm.getToken(token).getUserid() != entity.getIduser().getIduser()) {
+            return null;
+        }
+
         super.create(entity);
         getEntityManager().flush();
-        System.out.println(entity);
         return entity;
     }
 
     @PUT
-    @Path("{id}")
+    @Path("{token}/{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(@PathParam("id") Integer id, Solution entity) {
-        super.edit(entity);
-    }
+    public void edit(@PathParam("token") String token, @PathParam("id") Integer id, Solution entity) {
 
-    @PUT
-    @Path("editbyuserandstep/{step}/{isuser}")
-    @Consumes({"application/xml", "application/json"})
-    public void editByUserAndStep(@PathParam("step") Integer step, @PathParam("isuser") Integer isuser, Solution entity) {
+        if (!sm.checkToken(token) || sm.getToken(token).getUserid() != entity.getIduser().getIduser()) {
+            return;
+        }
+
         super.edit(entity);
     }
 
@@ -108,10 +114,15 @@ public class SolutionFacadeREST extends AbstractFacade<Solution> {
     }
 
     @GET
-    @Path("getall/{iduser}")
+    @Path("getall/{token}")
     @Produces({"application/xml", "application/json"})
-    public List<Solution> getAll(@PathParam("iduser") Integer iduser) {
-        return getEntityManager().createNamedQuery("Solution.findByIdUser").setParameter("iduser", iduser).getResultList();
+    public List<Solution> getAll(@PathParam("token") String token) {
+
+        if (!sm.checkToken(token)) {
+            return null;
+        }
+
+        return getEntityManager().createNamedQuery("Solution.findByIdUser").setParameter("iduser", sm.getToken(token).getUserid()).getResultList();
     }
 
     @Override

@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(edu.poli.prap.pp.service.CategoryFacadeREST.class);
         resources.add(edu.poli.prap.pp.service.LessonFacadeREST.class);
         resources.add(edu.poli.prap.pp.service.LevelFacadeREST.class);
+        resources.add(edu.poli.prap.pp.service.LoginFacadeREST.class);
         resources.add(edu.poli.prap.pp.service.RolFacadeREST.class);
         resources.add(edu.poli.prap.pp.service.SolutionFacadeREST.class);
         resources.add(edu.poli.prap.pp.service.StepFacadeREST.class);
