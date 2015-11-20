@@ -22,8 +22,14 @@ define([
          * @returns {undefined}
          */
         render: function () {
-            if (Login.isLogged()) {
-                console.log('logged');
+            this.menuShow(Login.isLogged());
+        },
+        menuShow: function (logged) {
+            (logged) ? $('#login_li').hide() : $('#login_li').show();
+            (logged) ? $('#register_li').hide() : $('#register_li').show();
+            (logged) ? $('#user_li').show() : $('#user_li').hide();
+            if (logged) {
+                $('#user_li').children().children().html(Login.getUsername());
             }
         },
         /**

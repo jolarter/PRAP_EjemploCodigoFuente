@@ -40,7 +40,7 @@ requirejs(['../../common/common'], function () {
             routes: {
                 // Define some URL routes
                 'login': 'showLogin',
-                'register': 'showIntro',
+                'register': 'showRegister',
                 '': 'default'
             },
             /**
