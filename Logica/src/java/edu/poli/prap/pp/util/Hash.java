@@ -35,4 +35,8 @@ public class Hash {
         return null;
     }
 
+    public static boolean isValidSHA1(String s) {
+        return s.matches("[a-fA-F0-9]{40}");
+    }
+
 }
