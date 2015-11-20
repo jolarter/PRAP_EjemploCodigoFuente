@@ -28,6 +28,10 @@ define([
             // show login
             this.$el.html(this.template());
             $('#login_message').modal();
+
+            $('#login_message').on('hidden.bs.modal', function (e) {
+                router.navigate('', {trigger: true, replace: true});
+            });
         },
         /**
          * on close view
@@ -52,7 +56,6 @@ define([
                 if (response.token) {
                     Login.newLogin(response);
                     $('#login_message').modal('hide');
-                    router.navigate('', {trigger: true, replace: true});
                 }
             });
 
