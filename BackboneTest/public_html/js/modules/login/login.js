@@ -2,6 +2,8 @@
  * @author Jhon Eslava <jhonjairoeslavaurrego@gmail.com>
  */
 
+/* global _ */
+
 define(function () {
     var instance = null;
 
@@ -53,13 +55,13 @@ define(function () {
 
         this.getUsername = function () {
             if (decodeCookie()) {
-                return decodeCookie().username;
+                return _.escape(decodeCookie().username);
             }
         };
 
         this.getToken = function () {
             if (decodeCookie()) {
-                return decodeCookie().token;
+                return _.escape(decodeCookie().token);
             }
         };
 
