@@ -13,8 +13,10 @@ define(['views/main/mainView'], function (MainView) {
          * methods
          */
         this.destroy = function () {
-            view.close();
-            view = null;
+            if (view !== null) {
+                view.close();
+                view = null;
+            }
             console.log('recycled login');
         };
 

@@ -41,6 +41,7 @@ requirejs(['../../common/common'], function () {
                 // Define some URL routes
                 'login': 'showLogin',
                 'register': 'showRegister',
+                'logout': 'showLogout',
                 '': 'default'
             },
             /**
@@ -85,6 +86,12 @@ requirejs(['../../common/common'], function () {
             showRegister: function () {
                 var self = this;
                 requirejs(['app/main/route.showRegister'], function (callback) {
+                    self.trash.push(callback());
+                });
+            },
+            showLogout: function () {
+                var self = this;
+                requirejs(['app/main/route.showLogout'], function (callback) {
                     self.trash.push(callback());
                 });
             }

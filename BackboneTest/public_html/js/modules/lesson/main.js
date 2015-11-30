@@ -43,6 +43,7 @@ requirejs(['../../common/common'], function () {
                 'challenge/:idCategory/:idLesson/:idStep': 'showStep',
                 'end/:idCategory/:idLesson': 'showEnd',
                 'exit': 'showExit',
+                'logout': 'showLogout',
                 '': 'default',
             },
             /**
@@ -140,6 +141,12 @@ requirejs(['../../common/common'], function () {
             showExit: function () {
                 var self = this;
                 requirejs(['app/lesson/route.showExit'], function (callback) {
+                    self.trash.push(callback());
+                });
+            },
+            showLogout: function () {
+                var self = this;
+                requirejs(['app/lesson/route.showLogout'], function (callback) {
                     self.trash.push(callback());
                 });
             }

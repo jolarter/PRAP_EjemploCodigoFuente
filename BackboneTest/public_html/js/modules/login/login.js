@@ -44,7 +44,7 @@ define(function () {
         };
 
         this.logout = function () {
-            //$.cookie(cookie_name, '', {path: '/'});
+            $.removeCookie(cookie_name, {path: '/'});
         };
 
         this.getUserId = function () {

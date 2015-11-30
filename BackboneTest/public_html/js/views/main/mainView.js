@@ -28,6 +28,7 @@ define([
             (logged) ? $('#login_li').hide() : $('#login_li').show();
             (logged) ? $('#register_li').hide() : $('#register_li').show();
             (logged) ? $('#user_li').show() : $('#user_li').hide();
+            (logged) ? $('#logout_li').show() : $('#logout_li').hide();
             if (logged) {
                 $('#user_li').children().children().html(Login.getUsername());
             }
