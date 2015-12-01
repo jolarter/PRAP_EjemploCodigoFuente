@@ -5,7 +5,11 @@
  */
 package edu.poli.prap.pp.service;
 
+import edu.poli.prap.pp.data.Category;
 import edu.poli.prap.pp.data.Lesson;
+import edu.poli.prap.pp.data.Solution;
+import edu.poli.prap.pp.data.Step;
+import edu.poli.prap.pp.data.Users;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -84,6 +88,17 @@ public class LessonFacadeREST extends AbstractFacade<Lesson> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @GET
+    @Path("getall/{idCategory}")
+    @Produces({"application/xml", "application/json"})
+    public List<Lesson> getAll(@PathParam("idCategory") Integer idCategory) {try {
+            Category category = (Category) getEntityManager().createNamedQuery("Category.findByIdcategory").setParameter("idcategory", idCategory).getSingleResult();            
+            return getEntityManager().createNamedQuery("Lesson.findByIdcategory").setParameter("idcategory", category).getResultList();
+        } catch (Exception e) {
+            return null;
+        }
     }
     
 }
