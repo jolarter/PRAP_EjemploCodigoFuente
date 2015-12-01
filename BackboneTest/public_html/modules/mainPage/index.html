@@ -1,88 +1,75 @@
-<!--
-    ******
-    Rebuild all html, only preserve the explicit html (highlight in comments)
-    Jhon Eslava
-    ******
--->
-<!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-        <title>Programa en el poli</title>
-
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-
-        <link rel="icon" href="../../imgs/mainPague/favicon.ico">
-
-        <!--
-            ******
-            bootstrap CSS & RequireJS
-            preserve this in next version
-            ******
-        -->
+        <link rel="icon" href="../../imgs/favicon.ico">
+        <title>Programa en el Poli</title>
+        <!-- Bootstrap core CSS -->
         <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
-        <script data-main="../../js/modules/main/main" src="../../js/libs/require/require.js"></script>
+        <!-- Custom styles for this template -->
+        <link href="../../css/mainPage/mainpage.css" rel="stylesheet">
+        <!-- Custom Carousel -->
+        <link href="../../css/mainPage/carousel.css" rel="stylesheet">        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
+
     <body>
-
-        <div class="navbar-wrapper" id="container">
-            <div class="container">
-
-                <nav class="navbar navbar-inverse navbar-static-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="http://www.estudiaenelpoli.edu.co/"><img style="position: relative; top: " src="../../imgs/mainPague/logo_header.png"></a>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-
-                                <li><a id ="comofunciona" href="#ancla1">Como funciona</a></li>
-                                <li><a id ="acerdade" href="#ancla2">Acerca de</a></li>
-                                <!--
-                                    ******
-                                    login ans register modals events 
-                                    preserve this ids in next version
-                                    ******
-                                -->
-                                <li id="login_li"><a href="#login">Iniciar sesion</a></li>
-                                <li id="register_li"><a href="#register">Crear cuenta</a></li>
-                                <li id="user_li" style="display: none;"><a href="#">Hola <span></span>!</a></li>
-                                <li id="logout_li" style="display: none;"><a href="#logout">Salir</a></li>
-
-                                <li><a class='st_facebook_large' displayText='Facebook' style="padding: 10px 5px 10px 5px " ></a></li>
-                                <li><a class='st_twitter_large' displayText='Tweet' style="padding: 10px 5px 10px 5px " ></a></li>
-                                <li><a class='st_googleplus_large' displayText='Google +' style="padding: 10px 5px 10px 5px " ></a></li>
-                                <li><a class='st_email_large' displayText='Email' style="padding: 10px 5px 10px 5px " ></a></li>
-
-                                <!--<ul id ="usuario" class="nav navbar-nav" ></ul>-->
-                                <p id ="usuario" class="nav navbar-nav" ></p>
-
-                            </ul>
+        <div class="main-nav">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xxs-2 col-xs-2 col-sm-2 col-md-4">
+                        <ul class="nav navbar-left navbar-nav nav-contact visible-md visible-lg">
+                            <li><a href=""><i class="fa fa-phone"></i>Linea Nacional: 01 8000 180779 </a></li>
+                        </ul>
+                        <div class="menu-toggler visible-xs visible-sm">
+                            <a href="" data-toggle="offcanvas" data-target=".user-menu"><i class="fa fa-bars"></i></a>
                         </div>
                     </div>
-                </nav>
-
+                    <div class="col-xxs-7 col-xs-8 col-sm-8 col-md-4 text-center">
+                        <a href="http://www.poli.edu.co" class="logo"><img src="../../imgs/logo.png" alt="Politécnico Grancolombiano" class=""/></a>
+                    </div>
+                    <div class="col-xxs-3 col-xs-2 col-sm-2 visible-xs visible-sm text-right smallsearchTop">
+                        <ul class="list-inline">
+                            <li class="col-xxs-6 col-xs-6  col-sm-4">
+                                <a href="#mobile-search" class="toggleSearchForm"><i class="fa fa-search"></i></a>
+                            </li>
+                            <li  class="col-xxs-6 col-xs-6 col-sm-4">
+                                <a href="#" class="modal-informacion-open"><i class="fa fa-comment"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4  col-md-4 text-right navbar-right visible-md visible-lg">
+                        <div class="dropdown">
+                            <button class="btn btn-default top-push half modal-informacion-open bold">SOLICITA INFORMACIÓN <i class="fa fa-chevron-circle-down"></i> </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-        <!-- Carousel
-        ================================================== -->
+        <div class="subnav-container menu-812 main-nav">
+            <ul class="nav navbar-nav list-centered navbar-main visible-md visible-lg">
+                <li><a id="comofunciona" href="#ancla1">Como funciona</a></li>
+                <li><a id="acerdade" href="#ancla2">Acerca de</a></li>
+                <li id="login_li"><a href="#login">Iniciar sesion</a></li>
+                <li id="register_li"><a href="#register">Crear cuenta</a></li>
+                <li id="user_li" style="display: none;"><a href="#">Hola <span></span>!</a></li>
+                <li id="logout_li" style="display: none;"><a href="#logout">Salir</a></li>
+                <li><a class='st_facebook_large' style="padding: 10px 5px 10px 5px " ></a></li>
+                <li><a class='st_twitter_large'  style="padding: 10px 5px 10px 5px " ></a></li>
+                <li><a class='st_googleplus_large'  style="padding: 10px 5px 10px 5px " ></a></li>
+                <li><a class='st_email_large'  style="padding: 10px 5px 10px 5px " ></a></li>
+            </ul>
+        </div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -90,12 +77,12 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="../../imgs/mainPague/a2.jpg" alt="First slide">
+                    <img typeof="foaf:Image" src="../../imgs/mainPague/a2.jpg" alt="Imagen1Carrusel" title="Un Millon de Posibilidades" /><div class="image_text"></div>
                     <div class="container">
                         <div class="carousel-caption">
                             <h1></h1>
                             <p></p>
-                            <p><a class="btn btn-lg btn-primary" href="http://www.unmillondeposibilidades.com/" role="button">Vermas</a></p>
+                            <p><a class="btn btn-lg btn-primary" href="http://www.unmillondeposibilidades.com/" role="button">Ver más</a></p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +92,7 @@
                         <div class="carousel-caption">
                             <h1></h1>
                             <p></p>
-                            <!--<p><a class="btn btn-lg btn-primary" href="http://www.poligran.edu.co/eContent/NewsDetail.asp?ID=15596&IDCompany=2" role="button">Ver mas</a></p>-->
+
                         </div>
                     </div>
                 </div>
@@ -115,226 +102,129 @@
                         <div class="carousel-caption">
                             <h1></h1>
                             <p></p>
-                            <p><a class="btn btn-lg btn-primary" href="http://www.estudiaenelpoli.edu.co/" role="button">Ver mas</a></p>
+                            <p><a class="btn btn-lg btn-primary" href="http://www.estudiaenelpoli.edu.co/" role="button">Ver más</a></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">            
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">            
                 <span class="sr-only">Next</span>
             </a>
-        </div><!-- /.carousel -->
-
-
-        <!-- Marketing messaging and featurettes
-        ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
-
-        <div class="container marketing">
-
-            <!-- Three columns of text below the carousel -->
-            <div class="row" id="Category">
-                <div class="col-lg-4">
-                    <img class="img-circle" src="../../imgs/mainPague/introduccion.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                    <h2>Introducción</h2>
-                    <p>Aprende los conceptos básicos de programación en Java.</p>
-                    <button id="1" >Lecciones &raquo;</button>
-
-
-
-
-                    <ul id="ocultar1" style="display:none" class="lec">
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay" >Leccion 1</a>Hola Mundo!</p>
-                            </section></li>
-
-
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay2" >Leccion 1.2:</a>Instrucciones y lineas de codigo</p>
-                            </section></li>
-
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay3" >Leccion 1.3:</a>Valores enteros y flotantes</p>
-                            </section></li>
-
-
-                    </ul> 
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <img class="img-circle" src="../../imgs/mainPague/variables.jpg" alt="Generic placeholder image" style="width: 150px; height: 150px;">
-                    <h2>Variables</h2>
-                    <p>Aprende a identificar y manejar los diferentes tipos de datos básicos en Java.</p>
-                    <button id="2">Lecciones &raquo;</button>
-
-                    <ul id="ocultar2" style="display:none" class="lec">
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay4" >Leccion 1:</a></p>
-                            </section></li>
-
-
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay5" >Leccion 2:</a></p>
-                            </section></li>
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay6" >Leccion 3:</a></p>
-                            </section></li>
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay7" >Leccion 4:</a></p>
-                            </section></li>
-
-
-                    </ul>
-
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <img class="img-circle" src="../../imgs/mainPague/ciclos.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-                    <h2>Condicionales</h2>
-                    <p>Entiende como construir estructuras condicionales y aplicarlas a tus programas.</p>
-                    <button id="3">Lecciones &raquo;</button>
-
-                    <ul id="ocultar3" style="display:none" >
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay8" >Leccion 1:</a></p>
-                            </section></li>
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay9" >Leccion 2:</a></p>
-                            </section></li>
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay10" >Leccion 3:</a></p>
-                            </section></li>
-
-                        <li><section>
-
-                                <p><a id="trigger-overlay11" >Leccion 4:</a></p>
-                            </section></li>
-
-
-                    </ul>
-
-
-                </div><!-- /.col-lg-4 --> 
-            </div><!-- /.row -->
-
-
-
-            <!-- START THE FEATURETTES -->
-
+        </div>
+        <div class="container marketing">       
+            
+            
+            <div id="categories">hola</div>
+            
             <hr class="featurette-divider">
-
             <div class="row featurette">
                 <div class="col-md-7" id="ancla1">
                     <h2 class="featurette-heading" >Como <span class="text-muted">Funciona</span></h2>
                     <p class="lead">Es una plataforma que permite el aprendizaje de programación básica, tenemos un sistema simple en el cual progresaras pasando cada uno de los cursos impuestos de esta manera aprenderás todos los conocimientos necesarios de manera ordenada y simple.</p>
                 </div>
                 <div class="col-md-5">
-                    <img  src="../../imgs/mainPague/java1.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">
-                    <!--<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image"> -->
+                    <img  src="../../imgs/mainPague/java1.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">                    
                 </div>
             </div>
-
             <hr class="featurette-divider">
-
             <div class="row featurette">
                 <div class="col-md-5">
-                    <img  src="../../imgs/mainPague/poli.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">
-                    <!--<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">-->
+                    <img  src="../../imgs/mainPague/poli.jpg" alt="Generic placeholder image" style="width: 400px; height: 300px;">                    
                 </div>
                 <div class="col-md-7">
                     <h2 class="featurette-heading" id="ancla2" >Acerca <span class="text-muted">de</span></h2>
                     <p class="lead">La Institución Universitaria Politécnico Grancolombiano tiene como fin contribuir a la inclusión social y al desarrollo de la nación, principalmente a través de la oferta de programas en toda la cadena de formación que se distingan por su calidad y pertinencia.</p>
                 </div>
             </div>
-
             <hr class="featurette-divider">
-
-
-
-            <!-- /END THE FEATURETTES -->
-
-
-            <!-- FOOTER -->
-            <footer>
-                <p class="pull-right"><a href="#">Regresar al inicio</a></p>
-                <!-- <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
-            </footer>
-
-        </div><!-- /.container -->
-
-        <div class="overlay overlay-boxes">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="101%" viewBox="0 0 1440 806" preserveAspectRatio="none">
-            <path d="m0.005959,200.364029l207.551124,0l0,204.342453l-207.551124,0l0,-204.342453z"/>
-            <path d="m0.005959,400.45401l207.551124,0l0,204.342499l-207.551124,0l0,-204.342499z"/>
-            <path d="m0.005959,600.544067l207.551124,0l0,204.342468l-207.551124,0l0,-204.342468z"/>
-            <path d="m205.752151,-0.36l207.551163,0l0,204.342437l-207.551163,0l0,-204.342437z"/>
-            <path d="m204.744629,200.364029l207.551147,0l0,204.342453l-207.551147,0l0,-204.342453z"/>
-            <path d="m204.744629,400.45401l207.551147,0l0,204.342499l-207.551147,0l0,-204.342499z"/>
-            <path d="m204.744629,600.544067l207.551147,0l0,204.342468l-207.551147,0l0,-204.342468z"/>
-            <path d="m410.416046,-0.36l207.551117,0l0,204.342437l-207.551117,0l0,-204.342437z"/>
-            <path d="m410.416046,200.364029l207.551117,0l0,204.342453l-207.551117,0l0,-204.342453z"/>
-            <path d="m410.416046,400.45401l207.551117,0l0,204.342499l-207.551117,0l0,-204.342499z"/>
-            <path d="m410.416046,600.544067l207.551117,0l0,204.342468l-207.551117,0l0,-204.342468z"/>
-            <path d="m616.087402,-0.36l207.551086,0l0,204.342437l-207.551086,0l0,-204.342437z"/>
-            <path d="m616.087402,200.364029l207.551086,0l0,204.342453l-207.551086,0l0,-204.342453z"/>
-            <path d="m616.087402,400.45401l207.551086,0l0,204.342499l-207.551086,0l0,-204.342499z"/>
-            <path d="m616.087402,600.544067l207.551086,0l0,204.342468l-207.551086,0l0,-204.342468z"/>
-            <path d="m821.748718,-0.36l207.550964,0l0,204.342437l-207.550964,0l0,-204.342437z"/>
-            <path d="m821.748718,200.364029l207.550964,0l0,204.342453l-207.550964,0l0,-204.342453z"/>
-            <path d="m821.748718,400.45401l207.550964,0l0,204.342499l-207.550964,0l0,-204.342499z"/>
-            <path d="m821.748718,600.544067l207.550964,0l0,204.342468l-207.550964,0l0,-204.342468z"/>
-            <path d="m1027.203979,-0.36l207.550903,0l0,204.342437l-207.550903,0l0,-204.342437z"/>
-            <path d="m1027.203979,200.364029l207.550903,0l0,204.342453l-207.550903,0l0,-204.342453z"/>
-            <path d="m1027.203979,400.45401l207.550903,0l0,204.342499l-207.550903,0l0,-204.342499z"/>
-            <path d="m1027.203979,600.544067l207.550903,0l0,204.342468l-207.550903,0l0,-204.342468z"/>
-            <path d="m1232.659302,-0.36l207.551147,0l0,204.342437l-207.551147,0l0,-204.342437z"/>
-            <path d="m1232.659302,200.364029l207.551147,0l0,204.342453l-207.551147,0l0,-204.342453z"/>
-            <path d="m1232.659302,400.45401l207.551147,0l0,204.342499l-207.551147,0l0,-204.342499z"/>
-            <path d="m1232.659302,600.544067l207.551147,0l0,204.342468l-207.551147,0l0,-204.342468z"/>
-            <path d="m-0.791443,-0.360001l207.551163,0l0,204.342438l-207.551163,0l0,-204.342438z"/>
-            </svg>
-            <button type="button" class="overlay-close">Close</button>
-            <nav>
-
-                <h2>Una clase no es solo un grupo de personas que reciben una leccion, 
-                    en programacion es muy importante</h2>
-                <br>
-                <h1>El estado de la leccion es: </h1> <img src="../../imgs/mainPague/aprobadp.jpg" alt=""/>
-                <br>
-                <a href="#" target="_self"> <input type="button" name="boton" value="Ir a la lección" /> </a>
-
-            </nav>
-        </div> 
-        <!--
-            ******
-            login ans register modals windows
-            preserve this id in next version
-            ******
-        -->
+            <!--<footer>
+                <p class="pull-right"><a href="#">Regresar al inicio</a></p>                
+            </footer>-->
+        </div>
+        
+        <footer class="footer">
+            <div class="dark-blue-bg ">
+                <div class="container-fluid">
+                    <div class="brand clearfix">
+                        <div class="logos-footer"><a href="/"><img src="http://www.poli.edu.co/sites/default/files/logos/logo-1_3_0.png"></a></div>
+                        <div class="logos-footer"><a href="http://ilumno.org" class="pull-right">
+                                <img src="http://www.poli.edu.co/sites/default/files/logos/logo-2_10.png"></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="row-5-cols row top-push visible-md visible-lg">
+                        <div class="col-sm-5cols">
+                            <ul class="col-xs-12 list-unstyled list-phones">
+                                <li>Línea de Servicio Bogotá:<span class="tel"><i class="fa fa-phone"></i>(571) 744 07 40 opción 1</span></li>
+                                <li>Línea de Servicio Medellín:<span class="tel"><i class="fa fa-phone"></i>(574) 604 0200</span></li>
+                                <li>Línea de Servicio Nacional:<span class="tel"><i class="fa fa-phone"></i>018000180779</span></li>
+                                <li>PBX:<span class="tel"><i class="fa fa-phone"></i>(571) 7455555</span></li>
+                            </ul>
+                            <h5>Síguenos</h5>
+                            <ul class="list-unstyled list-inline navbar-social">
+                                <li><a class="" href="https://www.facebook.com/poligran"><i class="fa fa-facebook img-circle"></i></a></li>
+                                <li><a class="" href="https://twitter.com/poligran"><i class="fa fa-twitter img-circle"></i></a></li>
+                                <li><a class="" href="https://plus.google.com/+poligran/"><i class="fa fa-google-plus img-circle"></i></a></li>
+                                <li><a class="" href="https://www.youtube.com/user/PolitecnicoGrancolom"><i class="fa fa-youtube img-circle"></i></a></li>
+                            </ul>
+                        </div>  
+                        <div class="col-sm-5cols subnav-footer-container menu-1933"><ul class="list-unstyled nav-footer"><li class="menu-1941 first"><a href="http://www.poli.edu.co/sedes"><i class="fa fa-angle-right"></i>Sedes</a></li>
+                                <li class="menu-2626"><a href="http://www.poli.edu.co/sites/default/files/terms/terminos_y_condiciones.pdf"><i class="fa fa-angle-right"></i>Términos y Condiciones</a></li>
+                                <li class="menu-1949 last"><a href="http://www.poli.edu.co/content/quienes-somos"><i class="fa fa-angle-right"></i>Quienes Somos</a></li>
+                            </ul></div><div class="col-sm-5cols subnav-footer-container menu-1934"><ul class="list-unstyled nav-footer"><li class="menu-1942 first"><a href="http://www.poli.edu.co/content/aspirantes"><i class="fa fa-angle-right"></i>Aspirantes</a></li>
+                                <li class="menu-1943"><a href="http://www.poli.edu.co/content/estudiantes"><i class="fa fa-angle-right"></i>Estudiantes</a></li>
+                                <li class="menu-1944"><a href="http://www.poli.edu.co/graduados"><i class="fa fa-angle-right"></i>Graduados</a></li>
+                                <li class="menu-1945 last"><a href="http://www.poli.edu.co/content/admin"><i class="fa fa-angle-right"></i>Admin</a></li>
+                            </ul></div><div class="col-sm-5cols subnav-footer-container menu-1935"><ul class="list-unstyled nav-footer"><li class="menu-1946 first"><a href="http://www.poli.edu.co/programas/"><i class="fa fa-angle-right"></i>Programas</a></li>
+                                <li class="menu-1947"><a href="http://www.poli.edu.co/content/educacion-virtual"><i class="fa fa-angle-right"></i>Educación Virtual</a></li>
+                                <li class="menu-1948 last"><a href="http://www.poli.edu.co/content/proceso-de-admision"><i class="fa fa-angle-right"></i>Admisión</a></li>
+                            </ul></div><div class="col-sm-5cols subnav-footer-container menu-1936"><ul class="list-unstyled nav-footer"><li class="menu-1950 first"><a href="/bienestar"><i class="fa fa-angle-right"></i>Vida Universitaria </a></li>
+                                <li class="menu-1951"><a href="http://www.poli.edu.co/content/vive-el-poli"><i class="fa fa-angle-right"></i>Vive el Poli</a></li>
+                                <li class="menu-1952 last"><a href="http://www.poli.edu.co/noticias"><i class="fa fa-angle-right"></i>Noticias</a></li>
+                            </ul></div>            </div>
+                    <div class="row visible-xs visible-sm">
+                        <ul class="col-xs-6 nav-footer"><li class="menu-1941 first"><a href="http://www.poli.edu.co/sedes"><i class="fa fa-angle-right"></i>Sedes</a></li>
+                            <li class="menu-2626"><a href="http://www.poli.edu.co/sites/default/files/terms/terminos_y_condiciones.pdf"><i class="fa fa-angle-right"></i>Términos y Condiciones</a></li>
+                            <li class="menu-1949 last"><a href="http://www.poli.edu.co/content/quienes-somos"><i class="fa fa-angle-right"></i>Quienes Somos</a></li>
+                        </ul><ul class="col-xs-6 nav-footer"><li class="menu-1942 first"><a href="http://www.poli.edu.co/content/aspirantes"><i class="fa fa-angle-right"></i>Aspirantes</a></li>
+                            <li class="menu-1943"><a href="http://www.poli.edu.co/content/estudiantes"><i class="fa fa-angle-right"></i>Estudiantes</a></li>
+                            <li class="menu-1944"><a href="http://www.poli.edu.co/graduados"><i class="fa fa-angle-right"></i>Graduados</a></li>
+                            <li class="menu-1945 last"><a href="http://www.poli.edu.co/content/admin"><i class="fa fa-angle-right"></i>Admin</a></li>
+                        </ul><ul class="col-xs-6 nav-footer"><li class="menu-1946 first"><a href="http://www.poli.edu.co/programas/"><i class="fa fa-angle-right"></i>Programas</a></li>
+                            <li class="menu-1947"><a href="http://www.poli.edu.co/content/educacion-virtual"><i class="fa fa-angle-right"></i>Educación Virtual</a></li>
+                            <li class="menu-1948 last"><a href="http://www.poli.edu.co/content/proceso-de-admision"><i class="fa fa-angle-right"></i>Admisión</a></li>
+                        </ul><ul class="col-xs-6 nav-footer"><li class="menu-1950 first"><a href="/bienestar"><i class="fa fa-angle-right"></i>Vida Universitaria </a></li>
+                            <li class="menu-1951"><a href="http://www.poli.edu.co/content/vive-el-poli"><i class="fa fa-angle-right"></i>Vive el Poli</a></li>
+                            <li class="menu-1952 last"><a href="http://www.poli.edu.co/noticias"><i class="fa fa-angle-right"></i>Noticias</a></li>
+                        </ul> 
+                        <div class="col-xs-12 text-center">
+                            <h5>Síguenos</h5>
+                            <ul class="list-unstyled list-inline navbar-social">
+                                <li><a class="" href="https://www.facebook.com/poligran"><i class="fa fa-facebook img-circle"></i></a></li>
+                                <li><a class="" href="https://twitter.com/poligran"><i class="fa fa-twitter img-circle"></i></a></li>
+                                <li><a class="" href="https://plus.google.com/+poligran/"><i class="fa fa-google-plus img-circle"></i></a></li>
+                                <li><a class="" href="https://www.youtube.com/user/PolitecnicoGrancolom"><i class="fa fa-youtube img-circle"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xtradark-blue-bg text-center">
+                <span>Institución de Educación Superior sujeta a inspección y vigilancia  del Ministerio de Educación Nacional.</span>
+            </div>
+        </footer>
         <div id="modal_container"></div>
-
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="../../js/libs/jquery/jquery-2.1.4.min.js"></script>
+        <script src="../../js/libs/bootstrap/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../js/libs/fix/ie10-viewport-bug-workaround.js"></script>
+        <!--Require.js-->
+        <script data-main="../../js/modules/main/main" src="../../js/libs/require/require.js"></script>
     </body>
 </html>
